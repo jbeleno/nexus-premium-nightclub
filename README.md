@@ -230,3 +230,16 @@ NEXUS Premium Nightclub represents the pinnacle of nightlife entertainment, comb
 **NEXUS Premium Nightclub** - A premium web experience for the city's most exclusive nightclub.
 
 *Built with ❤️ and cutting-edge technology*
+
+## 🌐 Live Demo
+
+Visit the live application: [https://nexus-premium-nightclub.vercel.app](https://nexus-premium-nightclub.vercel.app)
+
+## 📱 Features Showcase
+
+- **Hero Section**: Animated Silk background with custom shaders
+- **Events Calendar**: Interactive monthly calendar with event details
+- **Premium Menu**: Luxury pricing display for VIP services
+- **Reservation System**: Complete VIP booking form
+- **Responsive Design**: Perfect on desktop, tablet, and mobile
+- **Gold Theme**: Elegant Gold and Matte Black color scheme
