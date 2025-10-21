@@ -1,0 +1,46 @@
+{
+  "name": "nexus-premium-nightclub",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Una aplicación web moderna y elegante para una discoteca de alta gama, desarrollada con React.js y diseñada con una paleta Oro y Negro Mate premium.",
+  "keywords": [
+    "react",
+    "nightclub",
+    "premium",
+    "gold",
+    "black",
+    "three.js",
+    "framer-motion"
+  ],
+  "author": "NEXUS Premium Nightclub",
+  "homepage": "https://nexus-premium-nightclub.vercel.app",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "start": "vite preview --port 3000"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.15.12",
+    "framer-motion": "^10.16.16",
+    "lucide-react": "^0.294.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "styled-components": "^6.1.6",
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.1",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "terser": "^5.44.0",
+    "vite": "^5.0.0"
+  }
+}

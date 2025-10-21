@@ -1,0 +1,248 @@
+/* Header.css - Estilos específicos para el componente Navigation */
+
+/* Asegurar que el header esté siempre en la parte superior */
+.navigation-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  height: 80px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Contenedor principal del header */
+.navigation-container {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
+}
+
+/* Flexbox para distribución horizontal */
+.navigation-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+/* Logo - siempre a la izquierda */
+.navigation-logo {
+  flex-shrink: 0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f, #ffd700) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+}
+
+@media (min-width: 768px) {
+  .navigation-logo {
+    font-size: 1.875rem !important;
+  }
+}
+
+/* Navegación desktop - centro/derecha */
+.navigation-desktop {
+  display: none !important;
+  align-items: center !important;
+  gap: 2rem !important;
+}
+
+@media (min-width: 768px) {
+  .navigation-desktop {
+    display: flex !important;
+  }
+}
+
+/* Enlaces de navegación */
+.navigation-link {
+  font-size: var(--font-size-nav) !important;
+  font-weight: 500 !important;
+  color: var(--color-text-primary) !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+}
+
+.navigation-link:hover {
+  color: var(--color-primary-gold) !important;
+  text-shadow: 0 0 10px currentColor !important;
+}
+
+.navigation-link.active {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Botón CTA */
+.navigation-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.5rem 1.5rem !important;
+  background: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  font-size: var(--font-size-nav) !important;
+  font-weight: 600 !important;
+  border-radius: var(--border-radius-global) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.navigation-cta:hover {
+  box-shadow: var(--shadow-gold-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Botón hamburguesa - solo móvil */
+.navigation-mobile-button {
+  display: block !important;
+  color: #ffffff !important;
+  padding: 0.5rem !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  transition: background-color 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.navigation-mobile-button:hover {
+  background-color: #374151 !important;
+}
+
+@media (min-width: 768px) {
+  .navigation-mobile-button {
+    display: none !important;
+  }
+}
+
+/* Overlay móvil */
+.navigation-mobile-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 40 !important;
+  display: block !important;
+}
+
+@media (min-width: 768px) {
+  .navigation-mobile-overlay {
+    display: none !important;
+  }
+}
+
+.navigation-mobile-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.navigation-mobile-menu {
+  position: absolute !important;
+  top: 5rem !important;
+  left: 1rem !important;
+  right: 1rem !important;
+  background-color: #111827 !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid #374151 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.navigation-mobile-content {
+  padding: 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.navigation-mobile-link {
+  display: block !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: #d1d5db !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem !important;
+}
+
+.navigation-mobile-link:hover {
+  color: #ffffff !important;
+  background-color: #374151 !important;
+}
+
+.navigation-mobile-link.active {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+.navigation-mobile-cta {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  padding: 0.75rem 1.5rem !important;
+  background: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  font-weight: 600 !important;
+  border-radius: var(--border-radius-global) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  margin-top: 1rem !important;
+}
+
+.navigation-mobile-cta:hover {
+  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.25) !important;
+}
+
+/* Efectos de scroll */
+.navigation-scrolled {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid #374151 !important;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navigation-animate-in {
+  animation: fadeInDown 0.5s ease-out !important;
+}
+
+/* Asegurar que el contenido no quede oculto */
+body {
+  padding-top: 80px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .navigation-header {
+    height: 70px !important;
+  }
+  
+  body {
+    padding-top: 70px !important;
+  }
+  
+  .navigation-mobile-menu {
+    top: 4.5rem !important;
+  }
+}

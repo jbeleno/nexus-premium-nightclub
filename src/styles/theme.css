@@ -1,0 +1,2089 @@
+/* --- NEXUS Premium Nightclub - Tema Global Oro y Negro Mate --- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap');
+
+:root {
+  /* 1. Paleta Principal */
+  --color-background: #000000;      /* Negro Puro (Fondo base de toda la página) */
+  --color-surface: #1E1E1E;        /* Negro más claro (Fondo de Cards, Inputs, Footer) */
+  --color-primary-gold: #D4AF37;   /* Dorado (Títulos, CTAs, Iconos) */
+
+  /* 2. Paleta de Texto */
+  --color-text-primary: #EAEAEA;   /* Blanco Roto (Texto principal) */
+  --color-text-secondary: #AAAAAA;  /* Gris (Subtítulos, texto de footer) */
+  --color-text-on-gold: #000000;   /* Texto negro puro (Para botones dorados) */
+
+  /* 3. Nuevo Acento (Reemplaza Fucsia/Cian) */
+  --color-accent-purple: #4F2ADF; /* Morado Oscuro (Para brillos sutiles en 'hover' si se necesita) */
+  
+  /* 4. Geometría y Fuentes */
+  --border-radius-global: 12px;   /* ¡NUEVO! Bordes redondeados para todo */
+  --font-size-base: 16px;         /* Tamaño base */
+  --font-size-nav: 1.1rem;        /* (aprox 17.6px) Letra más grande para Header */
+  --font-size-footer: 1rem;       /* (aprox 16px) Letra más grande para Footer */
+
+  /* 5. Espaciado y Dimensiones */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* 6. Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 4px 15px rgba(212, 175, 55, 0.3);
+  --shadow-gold-hover: 0 8px 25px rgba(212, 175, 55, 0.4);
+
+  /* 7. Transiciones */
+  --transition-fast: all 0.15s ease-in-out;
+  --transition-normal: all 0.3s ease-in-out;
+  --transition-slow: all 0.5s ease-in-out;
+}
+
+/* --- Reseteo Básico y Estilos Globales --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-titles);
+  color: var(--color-primary-gold);
+  letter-spacing: 1.1px;
+  font-weight: 400;
+}
+
+/* --- Componentes Base --- */
+
+/* Botón Principal (RESERVAR AHORA, RESERVAR VIP) */
+.btn-primary {
+  background-color: var(--color-primary-gold);
+  color: var(--color-text-on-gold);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-global);
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-gold);
+  position: relative;
+  overflow: hidden;
+  margin: 0; /* Asegurar márgenes consistentes */
+}
+
+.btn-primary a {
+  color: var(--color-text-on-gold) !important;
+  text-decoration: none !important;
+}
+
+.btn-primary:hover {
+  background-color: #B8950B; /* Dorado más oscuro */
+  color: var(--color-text-on-gold) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-hover);
+}
+
+.btn-primary:hover a {
+  color: var(--color-text-on-gold) !important;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Botón Secundario (VER EVENTOS) */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary-gold);
+  border: 2px solid var(--color-primary-gold);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-global);
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  margin: 0; /* Sobrescribir márgenes de globals.css */
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary-gold);
+  color: var(--color-text-on-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-hover);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Tarjeta de Producto/Evento */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-global);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--color-primary-gold);
+  font-size: 1.25rem;
+  letter-spacing: 1.1px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-description {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+}
+
+.card-price {
+  color: var(--color-primary-gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Calendario de Eventos */
+.calendar {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-global);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.calendar-header {
+  color: var(--color-primary-gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.2px;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-xs);
+}
+
+.calendar-day {
+  padding: var(--spacing-sm);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: var(--border-radius-global);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.calendar-day:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  color: var(--color-primary-gold);
+}
+
+.calendar-day.has-event {
+  color: var(--color-primary-gold);
+  font-weight: 700;
+}
+
+.calendar-day.has-event::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-primary-gold);
+  border-radius: 50%;
+}
+
+.calendar-day.selected {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-primary-gold);
+  color: var(--color-primary-gold);
+}
+
+.calendar-day.selected::after {
+  display: none;
+}
+
+/* Indicador de eventos */
+.event-indicator {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-primary-gold);
+  border-radius: 50%;
+}
+
+/* Utilidades */
+.text-gold {
+  color: var(--color-primary-gold);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.border-gold {
+  border-color: var(--color-primary-gold);
+}
+
+.font-title {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Sección de Botones Hero - Control Total */
+.hero-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem; /* 24px de separación fija */
+  margin-bottom: 5rem; /* 80px de separación con siguiente sección */
+}
+
+.hero-button-wrapper {
+  display: block;
+  margin: 0; /* Sin márgenes adicionales */
+}
+
+/* Responsive para desktop */
+@media (min-width: 640px) {
+  .hero-buttons-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem; /* 32px en desktop */
+  }
+}
+
+/* Sección Próximos Eventos NEXUS - Estilos Únicos */
+.nexus-events-section {
+  background-color: #000000 !important; /* Negro más oscuro posible */
+  padding: 5rem 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Efecto de brillo dorado animado */
+.nexus-events-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.1),
+    rgba(212, 175, 55, 0.2),
+    rgba(212, 175, 55, 0.1),
+    transparent
+  ) !important;
+  animation: nexusShimmer 8s ease-in-out infinite !important;
+  z-index: 1 !important;
+}
+
+@keyframes nexusShimmer {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Asegurar que el contenido esté por encima del efecto */
+.nexus-events-section > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.nexus-events-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 3rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+}
+
+.nexus-events-title-accent {
+  color: var(--color-text-primary) !important;
+  animation: pulseNeonSubtle 3s ease-in-out infinite !important;
+}
+
+.nexus-events-title-static {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+@keyframes pulseNeonSubtle {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+  }
+}
+
+.nexus-events-subtitle {
+  color: var(--color-text-secondary) !important;
+  font-size: 1.125rem !important;
+  max-width: 42rem !important;
+  margin: 0 auto 5rem !important;
+  text-align: center !important;
+}
+
+.nexus-events-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 2rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.nexus-event-card {
+  background-color: var(--color-surface) !important;
+  border: 2px solid transparent !important;
+  border-radius: var(--border-radius-global) !important;
+  overflow: hidden !important;
+  transition: var(--transition-normal) !important;
+  position: relative !important;
+  box-shadow: var(--shadow-md) !important;
+  cursor: pointer !important;
+}
+
+.nexus-event-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.15),
+    rgba(212, 175, 55, 0.25),
+    rgba(212, 175, 55, 0.15),
+    transparent
+  ) !important;
+  transition: left 0.6s ease !important;
+  z-index: 1 !important;
+}
+
+.nexus-event-card:hover::before {
+  left: 100% !important;
+}
+
+.nexus-event-card:hover {
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.1) !important;
+  transform: translateY(-4px) !important;
+}
+
+.nexus-event-image-wrapper {
+  position: relative !important;
+  overflow: hidden !important;
+  height: 200px !important;
+  z-index: 2 !important;
+}
+
+.nexus-event-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-event-card:hover .nexus-event-image {
+  transform: scale(1.05) !important;
+}
+
+.nexus-event-badge {
+  position: absolute !important;
+  top: 1rem !important;
+  left: 1rem !important;
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  z-index: 3 !important;
+}
+
+.nexus-event-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent) !important;
+  z-index: 1 !important;
+}
+
+.nexus-event-info {
+  padding: 1.5rem !important;
+  background-color: var(--color-surface) !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.nexus-event-name {
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nexus-event-datetime {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-events-button-wrapper {
+  text-align: center !important;
+  margin-top: 3rem !important;
+}
+
+/* Sección Galería Exclusiva NEXUS - Estilos Únicos */
+.nexus-gallery-section {
+  background-image: url('../assets/images/fondo_galeria.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  position: relative !important;
+  padding: 5rem 0 !important;
+  overflow: hidden !important;
+}
+
+/* Overlay oscuro para contraste */
+.nexus-gallery-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  z-index: 1 !important;
+}
+
+/* Contenido por encima del overlay */
+.nexus-gallery-section > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.nexus-gallery-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 3rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+}
+
+.nexus-gallery-title-accent {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: pulseNeonSubtle 3s ease-in-out infinite !important;
+}
+
+.nexus-gallery-subtitle {
+  color: var(--color-text-secondary) !important;
+  font-size: 1.125rem !important;
+  max-width: 42rem !important;
+  margin: 0 auto 5rem !important;
+  text-align: center !important;
+}
+
+.nexus-gallery-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 2rem !important;
+  margin-top: 2rem !important;
+}
+
+.nexus-gallery-item {
+  position: relative !important;
+  aspect-ratio: 3/4 !important;
+  border-radius: var(--border-radius-global) !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  border: 3px solid transparent !important;
+  background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+              linear-gradient(45deg, var(--color-primary-gold), transparent, var(--color-primary-gold)) border-box !important;
+}
+
+.nexus-gallery-item:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.nexus-gallery-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: var(--transition-normal) !important;
+  border-radius: calc(var(--border-radius-global) - 3px) !important;
+}
+
+.nexus-gallery-item:hover .nexus-gallery-image {
+  transform: scale(1.1) !important;
+}
+
+.nexus-gallery-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  ) !important;
+  opacity: 0 !important;
+  transition: var(--transition-normal) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 1.5rem !important;
+  border-radius: calc(var(--border-radius-global) - 3px) !important;
+}
+
+.nexus-gallery-item:hover .nexus-gallery-overlay {
+  opacity: 1 !important;
+}
+
+.nexus-gallery-item-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 0.5rem !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+.nexus-gallery-item-type {
+  color: var(--color-primary-gold) !important;
+  font-size: 0.875rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Sección Experiencia VIP NEXUS - Estilos Únicos */
+.nexus-vip-section {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(255, 215, 0, 0.1) 50%,
+    rgba(212, 175, 55, 0.1) 100%
+  ) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 4rem 0 !important; /* Reducido de 5rem */
+}
+
+.nexus-vip-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(212, 175, 55, 0.05) 0%,
+    transparent 70%
+  ) !important;
+  pointer-events: none !important;
+}
+
+.nexus-vip-section > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.nexus-vip-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 3.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+}
+
+.nexus-vip-title-accent {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: pulseNeonSubtle 3s ease-in-out infinite !important;
+}
+
+.nexus-vip-subtitle {
+  color: var(--color-text-secondary) !important;
+  font-size: 1.25rem !important;
+  max-width: 48rem !important;
+  margin: 0 auto 3rem !important; /* Reducido de 5rem */
+  text-align: center !important;
+}
+
+.nexus-vip-features-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 2rem !important;
+  margin-bottom: 3rem !important; /* Reducido de 5rem */
+}
+
+.nexus-vip-feature {
+  text-align: center !important;
+  padding: 2rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: var(--border-radius-global) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  transition: var(--transition-normal) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.nexus-vip-feature:hover {
+  transform: translateY(-5px) !important;
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-vip-icon {
+  width: 4rem !important;
+  height: 4rem !important;
+  background: linear-gradient(135deg, var(--color-primary-gold), #FFD700) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 1rem !important;
+  color: var(--color-text-on-gold) !important;
+  font-size: 1.5rem !important;
+}
+
+.nexus-vip-feature-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nexus-vip-feature-description {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+}
+
+.nexus-vip-button-container {
+  text-align: center !important;
+  margin-top: 2rem !important; /* Reducido significativamente */
+}
+
+/* Footer NEXUS - Estilos Únicos */
+.nexus-footer {
+  background-color: #000000 !important; /* Negro puro */
+  padding: 2rem 0 !important; /* Reducido de 4rem */
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.nexus-footer-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
+}
+
+.nexus-footer-badge {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  margin-bottom: 2rem !important; /* Reducido de 3rem */
+  padding: 1rem !important;
+  background-color: var(--color-background) !important;
+  border-radius: var(--border-radius-global) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-footer-badge-icon {
+  color: var(--color-primary-gold) !important;
+}
+
+.nexus-footer-badge-text {
+  color: var(--color-text-secondary) !important;
+  font-size: 1rem !important; /* Aumentado de 0.875rem */
+  font-weight: 500 !important;
+}
+
+.nexus-footer-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 2rem !important;
+  margin-bottom: 2rem !important; /* Reducido de 3rem */
+}
+
+.nexus-footer-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.nexus-footer-title {
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important; /* Aumentado de 1.25rem */
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-footer-description {
+  color: var(--color-text-secondary) !important;
+  font-size: 1rem !important; /* Aumentado de 0.875rem */
+  line-height: 1.6 !important;
+}
+
+.nexus-footer-social-icons {
+  display: flex !important;
+  gap: 0.75rem !important;
+}
+
+.nexus-footer-social-icon {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  background-color: var(--color-background) !important;
+  border-radius: var(--border-radius-global) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--color-primary-gold) !important;
+  transition: var(--transition-normal) !important;
+  cursor: pointer !important;
+}
+
+.nexus-footer-social-icon:hover {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  transform: scale(1.1) !important;
+}
+
+.nexus-footer-hours-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-footer-hours-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0.25rem 0 !important;
+}
+
+.nexus-footer-hours-day {
+  color: var(--color-text-primary) !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important; /* Aumentado de 0.875rem */
+}
+
+.nexus-footer-hours-time {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important; /* Aumentado de 0.75rem */
+}
+
+.nexus-footer-contact-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.nexus-footer-contact-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+.nexus-footer-contact-icon {
+  width: 2rem !important;
+  height: 2rem !important;
+  background-color: var(--color-background) !important;
+  border-radius: var(--border-radius-global) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.nexus-footer-contact-icon svg {
+  color: var(--color-primary-gold) !important;
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+.nexus-footer-contact-content {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.nexus-footer-contact-label {
+  color: var(--color-text-primary) !important;
+  font-size: 1rem !important; /* Aumentado de 0.875rem */
+  font-weight: 500 !important;
+}
+
+.nexus-footer-contact-value {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important; /* Aumentado de 0.75rem */
+}
+
+.nexus-footer-newsletter-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.nexus-footer-newsletter-input {
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  background-color: var(--color-background) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--border-radius-global) !important;
+  color: var(--color-text-primary) !important;
+  font-size: 1rem !important; /* Aumentado de 0.875rem */
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-footer-newsletter-input:focus {
+  outline: none !important;
+  border-color: var(--color-primary-gold) !important;
+}
+
+.nexus-footer-newsletter-input::placeholder {
+  color: var(--color-text-secondary) !important;
+}
+
+.nexus-footer-newsletter-button {
+  width: 100% !important;
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  border: none !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important; /* Aumentado de 0.875rem */
+  letter-spacing: 1.1px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-footer-newsletter-button:hover {
+  background-color: #f4d03f !important;
+  transform: scale(1.05) !important;
+}
+
+.nexus-footer-bottom {
+  margin-top: 2rem !important; /* Reducido de 3rem */
+  padding-top: 1.5rem !important; /* Reducido de 2rem */
+  border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-footer-bottom-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+.nexus-footer-copyright {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important; /* Aumentado de 0.75rem */
+  text-align: center !important;
+}
+
+.nexus-footer-legal-links {
+  display: flex !important;
+  gap: 1.5rem !important;
+}
+
+.nexus-footer-legal-link {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important; /* Aumentado de 0.75rem */
+  text-decoration: none !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-footer-legal-link:hover {
+  color: var(--color-primary-gold) !important;
+}
+
+/* Responsive Footer */
+@media (min-width: 768px) {
+  .nexus-footer-bottom-content {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+  
+  .nexus-footer-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* Página Menú NEXUS - Estilos Únicos */
+.nexus-menu-page {
+  background-color: var(--color-background) !important;
+  min-height: 100vh !important;
+  padding-top: 6rem !important; /* Para el header fijo */
+}
+
+.nexus-menu-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 3rem 1rem !important;
+}
+
+.nexus-menu-header {
+  text-align: center !important;
+  margin-bottom: 4rem !important;
+}
+
+.nexus-menu-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 3.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-menu-title-accent {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: pulseNeonSubtle 3s ease-in-out infinite !important;
+}
+
+.nexus-menu-subtitle {
+  color: var(--color-text-secondary) !important;
+  font-size: 1.125rem !important;
+  max-width: 48rem !important;
+  margin: 0 auto !important;
+}
+
+.nexus-menu-tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.nexus-menu-tab {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1.1px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  border: 2px solid transparent !important;
+  background-color: var(--color-surface) !important;
+  color: var(--color-text-secondary) !important;
+}
+
+.nexus-menu-tab:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  color: var(--color-text-primary) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.nexus-menu-tab.active {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-menu-tab-icon {
+  margin-right: 0.5rem !important;
+  font-size: 1.125rem !important;
+}
+
+.nexus-menu-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 2rem !important;
+  margin-top: 2rem !important;
+}
+
+.nexus-menu-item-card {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  overflow: hidden !important;
+  border: 2px solid transparent !important;
+  transition: var(--transition-normal) !important;
+  position: relative !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-menu-item-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.nexus-menu-item-image-container {
+  position: relative !important;
+  overflow: hidden !important;
+  height: 200px !important;
+}
+
+.nexus-menu-item-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-menu-item-card:hover .nexus-menu-item-image {
+  transform: scale(1.05) !important;
+}
+
+.nexus-menu-item-price {
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1.1px !important;
+  z-index: 2 !important;
+}
+
+.nexus-menu-item-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent) !important;
+  z-index: 1 !important;
+}
+
+.nexus-menu-item-content {
+  padding: 1.5rem !important;
+  background-color: var(--color-surface) !important;
+}
+
+.nexus-menu-item-title {
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nexus-menu-item-description {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-menu-item-button {
+  width: 100% !important;
+  background-color: transparent !important;
+  color: var(--color-primary-gold) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 1.1px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-menu-item-button:hover {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  transform: scale(1.02) !important;
+}
+
+.nexus-menu-cta-section {
+  margin-top: 4rem !important;
+  text-align: center !important;
+  padding: 3rem 2rem !important;
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-menu-cta-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-menu-cta-description {
+  color: var(--color-text-secondary) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  max-width: 48rem !important;
+  margin: 0 auto 2rem !important;
+}
+
+.nexus-menu-cta-button {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  border: none !important;
+  padding: 1rem 2rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-menu-cta-button:hover {
+  background-color: #f4d03f !important;
+  transform: scale(1.05) !important;
+  box-shadow: var(--shadow-gold-hover) !important;
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+  .nexus-menu-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .nexus-menu-tabs {
+    gap: 0.5rem !important;
+  }
+  
+  .nexus-menu-tab {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .nexus-menu-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .nexus-menu-cta-section {
+    padding: 2rem 1rem !important;
+  }
+  
+  .nexus-menu-cta-title {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Página Eventos NEXUS - Estilos Únicos */
+.nexus-eventos-page {
+  background-color: var(--color-background) !important;
+  min-height: 100vh !important;
+  padding-top: 6rem !important; /* Para el header fijo */
+}
+
+.nexus-eventos-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 3rem 1rem !important;
+}
+
+.nexus-eventos-header {
+  text-align: center !important;
+  margin-bottom: 4rem !important;
+}
+
+.nexus-eventos-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 3.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-eventos-title-accent {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: pulseNeonSubtle 3s ease-in-out infinite !important;
+}
+
+.nexus-eventos-subtitle {
+  color: var(--color-text-secondary) !important;
+  font-size: 1.125rem !important;
+  max-width: 48rem !important;
+  margin: 0 auto !important;
+}
+
+.nexus-eventos-layout {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr !important;
+  gap: 3rem !important;
+  margin-top: 2rem !important;
+}
+
+.nexus-calendar-section {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-calendar-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 2rem !important;
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+}
+
+.nexus-calendar-header svg {
+  color: var(--color-primary-gold) !important;
+}
+
+.nexus-calendar-month-header {
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+}
+
+.nexus-calendar-month-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+}
+
+.nexus-calendar-weekdays {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-calendar-weekday {
+  text-align: center !important;
+  padding: 0.75rem 0.5rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.nexus-calendar-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-calendar-day {
+  aspect-ratio: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--border-radius-global) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  position: relative !important;
+  min-height: 3rem !important;
+  color: var(--color-text-secondary) !important;
+  background-color: transparent !important;
+}
+
+.nexus-calendar-day.empty {
+  visibility: hidden !important;
+}
+
+.nexus-calendar-day:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+.nexus-calendar-day.has-event {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  font-weight: 600 !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-calendar-day.has-event:hover {
+  transform: scale(1.05) !important;
+  box-shadow: var(--shadow-gold-hover) !important;
+}
+
+.nexus-calendar-day.selected {
+  background-color: var(--color-surface) !important;
+  color: var(--color-primary-gold) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-event-indicator {
+  width: 0.25rem !important;
+  height: 0.25rem !important;
+  background-color: var(--color-text-on-gold) !important;
+  border-radius: 50% !important;
+  margin-top: 0.25rem !important;
+}
+
+.nexus-event-detail-card {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  margin-top: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-event-detail-image {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  border-radius: var(--border-radius-global) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.nexus-event-detail-title {
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-event-detail-info {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.nexus-event-detail-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+}
+
+.nexus-event-detail-item svg {
+  color: var(--color-primary-gold) !important;
+}
+
+.nexus-event-detail-description {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-event-detail-price {
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.nexus-event-detail-button {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 1.1px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-event-detail-button:hover {
+  background-color: #f4d03f !important;
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-gold-hover) !important;
+}
+
+.nexus-eventos-sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+}
+
+.nexus-events-sidebar {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-events-sidebar-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1.5rem !important;
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+}
+
+.nexus-events-sidebar-title svg {
+  color: var(--color-primary-gold) !important;
+}
+
+.nexus-event-list-item {
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 1rem !important;
+  margin-bottom: 1rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.1) !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-event-list-item:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  border-color: var(--color-primary-gold) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-event-list-item-image {
+  width: 4rem !important;
+  height: 4rem !important;
+  object-fit: cover !important;
+  border-radius: var(--border-radius-global) !important;
+  margin-right: 1rem !important;
+}
+
+.nexus-event-list-item-content {
+  flex: 1 !important;
+}
+
+.nexus-event-list-item-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.nexus-event-list-item-date {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-event-list-item-dj {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nexus-event-list-item-price {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  display: inline-block !important;
+}
+
+.nexus-events-sidebar-button {
+  background-color: transparent !important;
+  color: var(--color-primary-gold) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 1.1px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  width: 100% !important;
+  margin-top: 1rem !important;
+}
+
+.nexus-events-sidebar-button:hover {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  transform: scale(1.02) !important;
+}
+
+.nexus-events-info-card {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-events-info-title {
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.nexus-events-info-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-events-info-dot {
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+  background-color: var(--color-primary-gold) !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+.nexus-events-info-text {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Responsive Eventos */
+@media (max-width: 1024px) {
+  .nexus-eventos-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nexus-eventos-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .nexus-calendar-section,
+  .nexus-events-sidebar,
+  .nexus-events-info-card {
+    padding: 1.5rem !important;
+  }
+  
+  .nexus-calendar-day {
+    min-height: 2.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .nexus-event-detail-info {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* Página Reservas NEXUS - Estilos Únicos */
+.nexus-reservas-page {
+  background-color: var(--color-background) !important;
+  min-height: 100vh !important;
+  padding-top: 6rem !important; /* Para el header fijo */
+}
+
+.nexus-reservas-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 3rem 1rem !important;
+}
+
+.nexus-reservas-header {
+  text-align: center !important;
+  margin-bottom: 4rem !important;
+}
+
+.nexus-reservas-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 3.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-reservas-title-accent {
+  background: linear-gradient(135deg, var(--color-primary-gold), #f4d03f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: pulseNeonSubtle 3s ease-in-out infinite !important;
+}
+
+.nexus-reservas-subtitle {
+  color: var(--color-text-secondary) !important;
+  font-size: 1.125rem !important;
+  max-width: 48rem !important;
+  margin: 0 auto !important;
+}
+
+.nexus-reservas-layout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 3rem !important;
+  margin-top: 2rem !important;
+}
+
+.nexus-reservation-form-container {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-reservation-form-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 2rem !important;
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+}
+
+.nexus-reservation-form-title svg {
+  color: var(--color-primary-gold) !important;
+}
+
+.nexus-form-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 1.5rem !important;
+}
+
+.nexus-form-grid-2 {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1.5rem !important;
+}
+
+.nexus-form-field {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-form-label {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  text-transform: uppercase !important;
+}
+
+.nexus-form-input {
+  padding: 0.875rem 1rem !important;
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border: 2px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--border-radius-global) !important;
+  color: var(--color-text-primary) !important;
+  font-size: 0.875rem !important;
+  transition: var(--transition-normal) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.nexus-form-input:focus {
+  outline: none !important;
+  border-color: var(--color-primary-gold) !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+}
+
+.nexus-form-input::placeholder {
+  color: var(--color-text-secondary) !important;
+}
+
+.nexus-form-select {
+  padding: 0.875rem 1rem !important;
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border: 2px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--border-radius-global) !important;
+  color: var(--color-text-primary) !important;
+  font-size: 0.875rem !important;
+  transition: var(--transition-normal) !important;
+  backdrop-filter: blur(10px) !important;
+  cursor: pointer !important;
+}
+
+.nexus-form-select:focus {
+  outline: none !important;
+  border-color: var(--color-primary-gold) !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+}
+
+.nexus-form-textarea {
+  padding: 0.875rem 1rem !important;
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border: 2px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--border-radius-global) !important;
+  color: var(--color-text-primary) !important;
+  font-size: 0.875rem !important;
+  transition: var(--transition-normal) !important;
+  backdrop-filter: blur(10px) !important;
+  resize: vertical !important;
+  min-height: 120px !important;
+  font-family: inherit !important;
+}
+
+.nexus-form-textarea:focus {
+  outline: none !important;
+  border-color: var(--color-primary-gold) !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+}
+
+.nexus-form-textarea::placeholder {
+  color: var(--color-text-secondary) !important;
+}
+
+.nexus-form-submit-button {
+  width: 100% !important;
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  border: none !important;
+  padding: 1rem 2rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  margin-top: 1rem !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-form-submit-button:hover {
+  background-color: #f4d03f !important;
+  transform: translateY(-3px) !important;
+  box-shadow: var(--shadow-gold-hover) !important;
+}
+
+.nexus-reservas-sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+}
+
+.nexus-info-card {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-info-card-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1.5rem !important;
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+}
+
+.nexus-info-card-title svg {
+  color: var(--color-primary-gold) !important;
+}
+
+.nexus-info-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  margin-bottom: 1rem !important;
+  padding: 0.75rem !important;
+  border-radius: var(--border-radius-global) !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-info-item:hover {
+  background-color: rgba(212, 175, 55, 0.05) !important;
+}
+
+.nexus-info-item-icon {
+  color: var(--color-primary-gold) !important;
+  flex-shrink: 0 !important;
+}
+
+.nexus-info-item-content h4 {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.nexus-info-item-content p {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  margin: 0 !important;
+}
+
+.nexus-map-placeholder {
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border: 2px dashed rgba(212, 175, 55, 0.3) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 3rem 2rem !important;
+  text-align: center !important;
+  color: var(--color-text-secondary) !important;
+}
+
+.nexus-map-placeholder svg {
+  color: var(--color-primary-gold) !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-map-placeholder p {
+  margin: 0.25rem 0 !important;
+  font-size: 0.875rem !important;
+}
+
+.nexus-policies-card {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-policies-card-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1.5rem !important;
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+}
+
+.nexus-policies-card-title svg {
+  color: var(--color-primary-gold) !important;
+}
+
+.nexus-policy-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-policy-item-dot {
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+  background-color: var(--color-primary-gold) !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+.nexus-policy-item-text {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+/* Responsive Reservas */
+@media (max-width: 1024px) {
+  .nexus-reservas-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nexus-reservas-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .nexus-reservation-form-container,
+  .nexus-info-card,
+  .nexus-policies-card {
+    padding: 1.5rem !important;
+  }
+  
+  .nexus-form-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .nexus-form-input,
+  .nexus-form-select,
+  .nexus-form-textarea {
+    padding: 0.75rem !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.9rem;
+  }
+  
+  .card {
+    padding: var(--spacing-md);
+  }
+  
+  .calendar {
+    padding: var(--spacing-md);
+  }
+  
+  .calendar-day {
+    padding: var(--spacing-xs);
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXUS - Premium Nightclub Experience</title>
+    <meta name="description" content="La experiencia nocturna más exclusiva de la ciudad. NEXUS Premium Nightclub ofrece eventos únicos, servicio VIP y la mejor música electrónica." />
+    
+    <!-- Preload de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Meta tags para SEO -->
+    <meta property="og:title" content="NEXUS - Premium Nightclub Experience" />
+    <meta property="og:description" content="La experiencia nocturna más exclusiva de la ciudad" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Estilos para prevenir FOUC (Flash of Unstyled Content) -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #050505;
+        color: #ffffff;
+        font-family: 'Lato', sans-serif;
+      }
+      
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        border: 3px solid #333;
+        border-top: 3px solid #FF00FF;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 9999;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      /* Ocultar contenido hasta que React cargue */
+      #root {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      
+      #root.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-spinner"></div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      // Mostrar contenido cuando React haya cargado
+      window.addEventListener('load', function() {
+        const root = document.getElementById('root');
+        root.classList.add('loaded');
+      });
+    </script>
+  </body>
+</html>
