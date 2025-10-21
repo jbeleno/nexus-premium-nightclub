@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Una aplicación web moderna y elegante para una discoteca de alta gama, desarrollada con React.js y diseñada con una paleta Oro y Negro Mate premium.",
+  "description": "A modern and elegant web application for a high-end nightclub, built with React.js and designed with a premium Gold and Matte Black theme featuring advanced 3D animations.",
   "keywords": [
     "react",
     "nightclub",
@@ -11,7 +11,12 @@
     "gold",
     "black",
     "three.js",
-    "framer-motion"
+    "framer-motion",
+    "spa",
+    "luxury",
+    "entertainment",
+    "webgl",
+    "shaders"
   ],
   "author": "NEXUS Premium Nightclub",
   "homepage": "https://nexus-premium-nightclub.vercel.app",

@@ -1,56 +1,56 @@
 # 🎉 NEXUS Premium Nightclub
 
-Una aplicación web moderna y elegante para una discoteca de alta gama, desarrollada con React.js y diseñada con una paleta **Oro y Negro Mate** premium con efectos visuales avanzados.
+A modern and elegant web application for a high-end nightclub, built with React.js and designed with a premium **Gold and Matte Black** theme featuring advanced 3D animations and smooth interactions.
 
-## 🚀 Características Principales
+## 🚀 Key Features
 
-- **🎨 Diseño Premium**: Paleta Oro y Negro Mate elegante y sofisticada
-- **🌊 Fondo Animado**: Componente Silk con shaders personalizados de Three.js
-- **📱 Responsive Design**: Mobile-first, perfecto en todos los dispositivos
-- **✨ Animaciones Fluidas**: Framer Motion para transiciones suaves
-- **🎭 Experiencia VIP**: Enfoque en servicios premium y exclusivos
-- **🔧 Sistema Unificado**: Variables CSS centralizadas para consistencia total
+- **🎨 Premium Design**: Elegant Gold and Matte Black color scheme
+- **🌊 Animated Background**: Custom Silk component with Three.js shaders
+- **📱 Responsive Design**: Mobile-first approach, perfect on all devices
+- **✨ Smooth Animations**: Framer Motion for fluid transitions
+- **🎭 VIP Experience**: Focus on premium and exclusive services
+- **🔧 Unified System**: Centralized CSS variables for total consistency
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Tech Stack
 
-- **React.js** (vía Vite) - Framework principal
-- **React Router DOM** - Enrutamiento
-- **Framer Motion** - Animaciones y transiciones
-- **Three.js** - Motor 3D para efectos visuales
-- **React Three Fiber** - Integración 3D con React
-- **Tailwind CSS** - Estilos y diseño responsive
+- **React.js** (via Vite) - Main framework
+- **React Router DOM** - Client-side routing
+- **Framer Motion** - Animations and transitions
+- **Three.js** - 3D graphics engine
+- **React Three Fiber** - 3D integration with React
+- **CSS Custom Properties** - Centralized theming system
 
-## 📦 Instalación Rápida
+## 📦 Quick Installation
 
 ```bash
-# Clonar el repositorio
-git clone <url-del-repositorio>
-cd discoteca
+# Clone the repository
+git clone https://github.com/your-username/nexus-premium-nightclub.git
+cd nexus-premium-nightclub
 
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Instalar dependencias 3D (si hay conflictos)
+# Install 3D dependencies (if conflicts occur)
 npm install three @react-three/fiber --legacy-peer-deps
 
-# Ejecutar en desarrollo
+# Run development server
 npm run dev
 ```
 
-La aplicación se abrirá automáticamente en `http://localhost:3000`
+The application will automatically open at `http://localhost:3000`
 
-## 🎨 Sistema de Diseño - Oro y Negro Mate
+## 🎨 Design System - Gold and Matte Black
 
-### **Paleta Principal**
-- **Negro Mate**: `#000000` - Fondo principal elegante
-- **Superficie**: `#1E1E1E` - Fondo de cards y elementos
-- **Dorado Premium**: `#D4AF37` - Color principal para títulos y CTAs
-- **Dorado Oscuro**: `#B8950B` - Variación para hover
-- **Texto Primario**: `#EAEAEA` - Blanco roto para texto principal
-- **Texto Secundario**: `#AAAAAA` - Gris para subtítulos
-- **Texto sobre Dorado**: `#000000` - Negro para máximo contraste
+### **Color Palette**
+- **Matte Black**: `#000000` - Elegant main background
+- **Surface**: `#1E1E1E` - Background for cards and elements
+- **Premium Gold**: `#D4AF37` - Primary color for titles and CTAs
+- **Dark Gold**: `#B8950B` - Variation for hover states
+- **Primary Text**: `#EAEAEA` - Off-white for main text
+- **Secondary Text**: `#AAAAAA` - Gray for subtitles
+- **Text on Gold**: `#000000` - Black for maximum contrast
 
-### **Variables CSS Centralizadas**
+### **Centralized CSS Variables**
 ```css
 :root {
   --color-background: #000000;
@@ -65,128 +65,168 @@ La aplicación se abrirá automáticamente en `http://localhost:3000`
 }
 ```
 
-## 📱 Páginas Incluidas
+## 📱 Included Pages
 
-### 🏠 **Home** - Página Principal
-- Hero section con fondo Silk animado
-- Próximos eventos (3 eventos destacados)
-- Galería de fotos/videos
-- CTA para experiencias VIP
+### 🏠 **Home** - Main Page
+- Hero section with animated Silk background
+- Upcoming events preview (3 featured events)
+- Photo/video gallery
+- VIP experience CTA
 
-### 🍸 **Menú** - Precios Premium
-- Sistema de pestañas (Cócteles, Botellas, VIP, Hookah)
-- Precios típicos de nightclub premium
-- Cards con animaciones hover
-- CTA hacia reservas VIP
+### 🍸 **Menu** - Premium Pricing
+- Tabbed system (Cocktails, Bottles, VIP, Hookah)
+- Premium nightclub pricing
+- Cards with hover animations
+- CTA towards VIP reservations
 
-### 📅 **Eventos** - Calendario Interactivo
-- Vista mensual con eventos destacados
-- Información completa de cada evento
-- Sidebar con eventos próximos
-- Click en fechas para ver detalles
+### 📅 **Events** - Interactive Calendar
+- Monthly view with highlighted events
+- Complete event information
+- Sidebar with upcoming events
+- Click on dates to view details
 
-### 📞 **Reservas** - Formulario VIP
-- Datos personales y preferencias
-- Información de políticas
-- Mapa de ubicación
-- Validación de campos
+### 📞 **Reservations** - VIP Form
+- Personal data and preferences
+- Policy information
+- Location map
+- Field validation
 
-## 🎭 Componentes Especiales
+## 🎭 Special Components
 
-### **Silk - Fondo Animado con Shaders**
+### **Silk - Animated Background with Shaders**
 ```jsx
 <Silk
-  speed={3}           // Velocidad de animación
-  scale={1.2}         // Escala del patrón
-  color="#D4AF37"     // Dorado NEXUS
-  noiseIntensity={1.2} // Intensidad de ruido
-  rotation={0}         // Rotación del patrón
+  speed={3}           // Animation speed
+  scale={1.2}         // Pattern scale
+  color="#D4AF37"     // NEXUS gold
+  noiseIntensity={1.2} // Noise intensity
+  rotation={0}         // Pattern rotation
 />
 ```
 
-**Características:**
-- Shaders personalizados con Three.js
-- Animación fluida y orgánica
-- Color dorado integrado con la marca
-- Performance optimizado
-- Responsive automático
+**Features:**
+- Custom shaders with Three.js
+- Fluid and organic animation
+- Gold color integrated with brand
+- Optimized performance
+- Automatic responsive behavior
 
-### **Navigation - Header Responsive**
-- Desktop: Logo + enlaces horizontales + botón VIP
-- Mobile: Logo + menú hamburguesa con overlay
-- Scroll: Cambios de estilo al hacer scroll
-- Animaciones: Transiciones suaves con Framer Motion
+### **Navigation - Responsive Header**
+- Desktop: Logo + horizontal links + VIP button
+- Mobile: Logo + hamburger menu with overlay
+- Scroll: Dynamic style changes
+- Animations: Smooth transitions with Framer Motion
 
-### **Sistema de Botones Unificado**
-- **Botón Primario**: Fondo dorado, texto negro, hover dorado oscuro
-- **Botón Secundario**: Borde dorado, texto dorado, hover fondo dorado
-- **Consistencia**: Variables CSS centralizadas en todo el proyecto
+### **Unified Button System**
+- **Primary Button**: Gold background, black text, dark gold hover
+- **Secondary Button**: Gold border, gold text, gold background hover
+- **Consistency**: Centralized CSS variables throughout the project
 
-## 🚀 Scripts Disponibles
+## 🚀 Available Scripts
 
-- `npm run dev` - Servidor de desarrollo
-- `npm run build` - Build de producción
-- `npm run preview` - Preview del build
-- `npm run lint` - Linter de código
+- `npm run dev` - Development server
+- `npm run build` - Production build
+- `npm run preview` - Preview the build
+- `npm run lint` - Code linter
+- `npm start` - Start production preview
 
-## 📊 Estado del Proyecto
+## 📊 Project Status
 
-### ✅ **Completado**
-- [x] Estructura base del proyecto con React + Vite
-- [x] Sistema de diseño unificado Oro y Negro Mate
-- [x] Componente Silk con shaders personalizados de Three.js
-- [x] Navegación responsive con menú hamburguesa
-- [x] Páginas principales (Home, Menú, Eventos, Reservas)
-- [x] Footer completo con información y newsletter
-- [x] Sistema de espaciado responsive
-- [x] Animaciones fluidas con Framer Motion
-- [x] Optimización mobile-first
-- [x] Variables CSS centralizadas para consistencia
-- [x] Refactorización completa del tema visual
-- [x] Corrección de errores de Three.js/React Three Fiber
+### ✅ **Completed**
+- [x] Project base structure with React + Vite
+- [x] Unified Gold and Matte Black design system
+- [x] Silk component with custom Three.js shaders
+- [x] Responsive navigation with hamburger menu
+- [x] Main pages (Home, Menu, Events, Reservations)
+- [x] Complete footer with information and newsletter
+- [x] Responsive spacing system
+- [x] Fluid animations with Framer Motion
+- [x] Mobile-first optimization
+- [x] Centralized CSS variables for consistency
+- [x] Complete visual theme refactoring
+- [x] Three.js/React Three Fiber error fixes
 
-### 🔧 **Características Técnicas**
-- **Variables CSS**: Sistema centralizado en `theme.css`
-- **Componentes únicos**: Clases con prefijos `nexus-` para evitar conflictos
-- **Responsive**: Breakpoints optimizados para todos los dispositivos
-- **Performance**: CSS optimizado y componentes eficientes
-- **Accesibilidad**: Contraste perfecto y legibilidad optimizada
+### 🔧 **Technical Features**
+- **CSS Variables**: Centralized system in `theme.css`
+- **Unique Components**: Classes with `nexus-` prefixes to avoid conflicts
+- **Responsive**: Optimized breakpoints for all devices
+- **Performance**: Optimized CSS and efficient components
+- **Accessibility**: Perfect contrast and optimized readability
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── EventModal.jsx      # Modal de eventos semanales
-│   ├── Footer.jsx          # Footer con información y newsletter
-│   ├── Navigation.jsx      # Header con navegación responsive
-│   └── Silk.jsx            # Componente de fondo animado con shaders
+│   ├── EventModal.jsx      # Weekly events modal
+│   ├── Footer.jsx          # Footer with information and newsletter
+│   ├── Navigation.jsx      # Responsive header navigation
+│   └── Silk.jsx            # Animated background component with shaders
 ├── pages/
-│   ├── Home.jsx            # Página principal con hero y eventos
-│   ├── Menu.jsx            # Menú de precios (no pedidos)
-│   ├── Eventos.jsx        # Calendario de eventos interactivo
-│   └── Reservas.jsx       # Formulario de reservas VIP
+│   ├── Home.jsx            # Main page with hero and events
+│   ├── Menu.jsx            # Pricing menu (not ordering)
+│   ├── Eventos.jsx        # Interactive events calendar
+│   └── Reservas.jsx       # VIP reservations form
 ├── styles/
-│   ├── globals.css        # Estilos globales y variables CSS
-│   ├── Header.css         # Estilos específicos del header
-│   └── theme.css          # Sistema de diseño centralizado
+│   ├── globals.css        # Global styles and CSS variables
+│   ├── Header.css         # Header-specific styles
+│   └── theme.css          # Centralized design system
 └── assets/
     └── images/
-        ├── img.jpg        # Imagen de ejemplo para productos
-        └── fondo_galeria.jpg # Fondo para galería exclusiva
+        ├── img.jpg        # Example image for products
+        └── fondo_galeria.jpg # Background for exclusive gallery
 ```
 
-## 🎯 Características Destacadas
+## 🎯 Highlighted Features
 
-- **✨ Experiencia Premium**: Paleta dorada elegante y sofisticada
-- **🎭 Interactividad**: Transiciones suaves y microinteracciones
-- **📱 Mobile-First**: Diseño optimizado para todos los dispositivos
-- **🎨 Consistencia**: Sistema de colores y espaciado unificado
-- **⚡ Performance**: Optimizado y rápido
-- **🔧 Mantenible**: Código bien estructurado y documentado
+- **✨ Premium Experience**: Elegant and sophisticated gold color scheme
+- **🎭 Interactivity**: Smooth transitions and microinteractions
+- **📱 Mobile-First**: Optimized design for all devices
+- **🎨 Consistency**: Unified color and spacing system
+- **⚡ Performance**: Optimized and fast
+- **🔧 Maintainable**: Well-structured and documented code
+
+## 🚀 Deployment
+
+### **Vercel (Recommended)**
+1. Connect your GitHub repository to Vercel
+2. Automatic deployment configuration:
+   - Framework: Vite
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
+
+### **Other Platforms**
+- **Netlify**: Compatible with Vite builds
+- **GitHub Pages**: Requires additional configuration
+- **AWS S3**: Static hosting compatible
+
+## 📈 Performance
+
+- **Build Size**: Optimized chunks with code splitting
+- **CSS**: 82KB minified and gzipped
+- **JavaScript**: Separated into vendor, router, motion, three, and icons chunks
+- **Images**: Optimized and compressed
+- **Loading**: Efficient lazy loading and chunking
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🎭 About NEXUS
+
+NEXUS Premium Nightclub represents the pinnacle of nightlife entertainment, combining cutting-edge technology with luxurious design to create an unforgettable digital experience that mirrors the exclusivity and sophistication of our physical venue.
 
 ---
 
-**NEXUS Premium Nightclub** - Una experiencia web premium para la discoteca más exclusiva de la ciudad.
+**NEXUS Premium Nightclub** - A premium web experience for the city's most exclusive nightclub.
 
-*Desarrollado con ❤️ y tecnología de vanguardia*
+*Built with ❤️ and cutting-edge technology*
