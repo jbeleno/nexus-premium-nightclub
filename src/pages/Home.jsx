@@ -116,7 +116,7 @@ const Home = () => {
 
           {/* Botones CTA - Refactorizado */}
           <motion.div
-            className="hero-buttons-container flex flex-wrap gap-4 justify-center"
+            className="hero-buttons-container"
             variants={itemVariants}
           >
             {/* Botón Principal */}
@@ -127,7 +127,7 @@ const Home = () => {
             >
               <Link
                 to="/reservas"
-                className="btn-primary inline-flex items-center gap-2"
+                className="btn-primary"
               >
                 <Calendar size={20} />
                 Reservar Ahora
@@ -142,7 +142,7 @@ const Home = () => {
             >
               <Link
                 to="/eventos"
-                className="btn-white inline-flex items-center gap-2"
+                className="btn-white"
               >
                 <Play size={20} />
                 Ver Eventos

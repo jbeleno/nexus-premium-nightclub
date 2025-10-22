@@ -86,6 +86,11 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   overflow: hidden;
   margin: 0; /* Asegurar márgenes consistentes */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* 8px entre ícono y texto */
+  text-decoration: none;
 }
 
 .btn-primary a {
@@ -158,6 +163,11 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* 8px entre ícono y texto */
+  text-decoration: none;
 }
 
 .btn-white:hover {
@@ -1058,9 +1068,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nexus-menu-container {
-  max-width: 1200px !important;
+  max-width: 1000px !important;
   margin: 0 auto !important;
-  padding: 3rem 1rem !important;
+  padding: 3rem 2.5rem !important;
 }
 
 .nexus-menu-header {
@@ -1328,9 +1338,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nexus-eventos-container {
-  max-width: 1200px !important;
+  max-width: 1000px !important;
   margin: 0 auto !important;
-  padding: 3rem 1rem !important;
+  padding: 3rem 2.5rem !important;
 }
 
 .nexus-eventos-header {
@@ -1726,9 +1736,20 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
   }
+  
+  /* Asegurar orden correcto en móvil */
+  .nexus-eventos-sidebar {
+    order: 2 !important;
+  }
 }
 
 @media (max-width: 768px) {
+  .nexus-menu-container,
+  .nexus-eventos-container,
+  .nexus-reservas-container {
+    padding: 3rem 1.5rem !important;
+  }
+  
   .nexus-eventos-title {
     font-size: 2.5rem !important;
   }
@@ -1758,9 +1779,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nexus-reservas-container {
-  max-width: 1200px !important;
+  max-width: 1000px !important;
   margin: 0 auto !important;
-  padding: 3rem 1rem !important;
+  padding: 3rem 2.5rem !important;
 }
 
 .nexus-reservas-header {
@@ -2641,8 +2662,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .nexus-calendar-weekday {
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
     padding: 0.5rem 0 !important;
+    letter-spacing: 0 !important;
   }
 }
 
@@ -2958,7 +2980,11 @@ h1, h2, h3, h4, h5, h6 {
   .nexus-menu-title,
   .nexus-eventos-title,
   .nexus-reservas-title {
-    font-size: 2rem !important;
+    font-size: 1.75rem !important;
+  }
+  
+  .nexus-eventos-subtitle {
+    font-size: 0.875rem !important;
   }
   
   .hero-text {
@@ -2996,11 +3022,37 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.75rem !important;
   }
   
+  .nexus-calendar-weekday {
+    font-size: 0.625rem !important;
+    padding: 0.35rem 0 !important;
+  }
+  
+  .nexus-calendar-month-name {
+    font-size: 1.125rem !important;
+  }
+  
+  .nexus-calendar-wrapper {
+    padding: 1rem !important;
+  }
+  
+  .nexus-calendar-days-grid {
+    gap: 0.35rem !important;
+  }
+  
+  .nexus-calendar-weekdays {
+    gap: 0.35rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
   /* Padding reducido */
   .nexus-menu-container,
   .nexus-eventos-container,
   .nexus-reservas-container {
-    padding: 2rem 0.75rem !important;
+    padding: 1.5rem 0.75rem !important;
+  }
+  
+  .nexus-eventos-header {
+    margin-bottom: 2rem !important;
   }
   
   .nexus-calendar-section,
@@ -3009,6 +3061,51 @@ h1, h2, h3, h4, h5, h6 {
   .nexus-policies-card,
   .nexus-events-sidebar {
     padding: 1rem !important;
+  }
+  
+  /* Event Detail Card - Optimización móvil */
+  .nexus-event-detail-card {
+    padding: 1rem !important;
+    margin-top: 1.5rem !important;
+  }
+  
+  .nexus-event-detail-image {
+    height: 150px !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .nexus-event-detail-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .nexus-event-detail-info {
+    gap: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Event List Items - Móvil */
+  .nexus-event-list-item-image {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+  }
+  
+  .nexus-event-list-item-title {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Events Sidebar */
+  .nexus-events-sidebar-title {
+    font-size: 1.125rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .nexus-events-info-card {
+    padding: 1rem !important;
+  }
+  
+  .nexus-events-info-title {
+    font-size: 1rem !important;
   }
   
   /* Botones más grandes para touch */
@@ -3020,13 +3117,22 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   /* Hero ajustes */
+  .hero-buttons-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+  }
+
   .hero-button-wrapper {
     width: 100% !important;
+    display: block !important;
   }
   
   .hero-button-wrapper .btn-primary,
   .hero-button-wrapper .btn-white {
     width: 100% !important;
+    display: flex !important;
     justify-content: center !important;
   }
   
@@ -3083,6 +3189,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .hero-buttons-container {
+    display: flex !important;
     flex-direction: column !important;
     gap: 1rem !important;
     width: 100% !important;
@@ -3090,10 +3197,12 @@ h1, h2, h3, h4, h5, h6 {
   
   .hero-button-wrapper {
     width: 100% !important;
+    display: block !important;
   }
   
   .hero-button-wrapper a {
     width: 100% !important;
+    display: flex !important;
     justify-content: center !important;
   }
 }
