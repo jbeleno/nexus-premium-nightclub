@@ -2293,7 +2293,7 @@ h1, h2, h3, h4, h5, h6 {
 .nexus-calendar-day-number {
   color: var(--color-text-primary) !important;
   font-family: 'Bebas Neue', sans-serif !important;
-  font-size: 1rem !important;
+  font-size: 2rem !important;
   font-weight: 400 !important;
   letter-spacing: 0.5px !important;
 }
