@@ -139,6 +139,40 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(0);
 }
 
+/* Botón Blanco (Para Hero "Ver Eventos") */
+.btn-white {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-global);
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn-white:hover {
+  background-color: var(--color-primary-gold);
+  color: var(--color-text-on-gold);
+  border-color: var(--color-primary-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-hover);
+  backdrop-filter: none;
+}
+
+.btn-white:active {
+  transform: translateY(0);
+}
+
 /* Tarjeta de Producto/Evento */
 .card {
   background-color: var(--color-surface);
@@ -1798,7 +1832,7 @@ h1, h2, h3, h4, h5, h6 {
 .nexus-form-grid-2 {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 1.5rem !important;
+  gap: 4rem !important;
 }
 
 .nexus-form-field {
@@ -1839,7 +1873,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nexus-form-select {
-  padding: 0.875rem 1rem !important;
+  padding: 0.875rem 3rem 0.875rem 1rem !important;
   background-color: rgba(212, 175, 55, 0.05) !important;
   border: 2px solid rgba(212, 175, 55, 0.2) !important;
   border-radius: var(--border-radius-global) !important;
@@ -1848,13 +1882,55 @@ h1, h2, h3, h4, h5, h6 {
   transition: var(--transition-normal) !important;
   backdrop-filter: blur(10px) !important;
   cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1rem center !important;
+  background-size: 1.25rem !important;
+}
+
+.nexus-form-select:hover {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  background-color: rgba(212, 175, 55, 0.08) !important;
 }
 
 .nexus-form-select:focus {
   outline: none !important;
   border-color: var(--color-primary-gold) !important;
   background-color: rgba(212, 175, 55, 0.1) !important;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1), 0 0 20px rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Estilos para las opciones del select */
+.nexus-form-select option {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text-primary) !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 0.875rem !important;
+}
+
+.nexus-form-select option:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+.nexus-form-select option:checked {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  font-weight: 600 !important;
+}
+
+/* Placeholder del select (primera opción deshabilitada) */
+.nexus-form-select option[value=""] {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Estado disabled */
+.nexus-form-select:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
 }
 
 .nexus-form-textarea {
@@ -2064,6 +2140,1109 @@ h1, h2, h3, h4, h5, h6 {
   .nexus-form-textarea {
     padding: 0.75rem !important;
   }
+}
+
+/* Calendario Mejorado NEXUS */
+.nexus-calendar-wrapper {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.nexus-calendar-navigation {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-calendar-nav-button {
+  background-color: transparent !important;
+  color: var(--color-primary-gold) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-calendar-nav-button:hover {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-calendar-month-name {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  text-transform: capitalize !important;
+}
+
+.nexus-calendar-weekdays {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.nexus-calendar-weekday {
+  text-align: center !important;
+  padding: 0.75rem 0 !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.nexus-calendar-days-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-calendar-day-cell {
+  aspect-ratio: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--border-radius-global) !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  position: relative !important;
+  min-height: 3.5rem !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 2px solid transparent !important;
+}
+
+.nexus-calendar-day-cell.empty {
+  visibility: hidden !important;
+  cursor: default !important;
+}
+
+.nexus-calendar-day-cell:hover:not(.empty) {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.nexus-calendar-day-cell.today {
+  border-color: var(--color-text-primary) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.nexus-calendar-day-cell.has-event {
+  background-color: rgba(212, 175, 55, 0.15) !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
+}
+
+.nexus-calendar-day-cell.has-event:hover {
+  background-color: var(--color-primary-gold) !important;
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-calendar-day-cell.has-event:hover .nexus-calendar-day-number {
+  color: var(--color-text-on-gold) !important;
+}
+
+.nexus-calendar-day-cell.selected {
+  background-color: var(--color-primary-gold) !important;
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: var(--shadow-gold-hover) !important;
+}
+
+.nexus-calendar-day-cell.selected .nexus-calendar-day-number {
+  color: var(--color-text-on-gold) !important;
+  font-weight: 700 !important;
+}
+
+.nexus-calendar-day-number {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.nexus-calendar-event-dots {
+  display: flex !important;
+  gap: 0.15rem !important;
+  margin-top: 0.25rem !important;
+  position: absolute !important;
+  bottom: 0.5rem !important;
+}
+
+.nexus-calendar-event-dot {
+  width: 0.3rem !important;
+  height: 0.3rem !important;
+  background-color: var(--color-primary-gold) !important;
+  border-radius: 50% !important;
+  display: block !important;
+}
+
+.nexus-calendar-day-cell.selected .nexus-calendar-event-dot,
+.nexus-calendar-day-cell.has-event:hover .nexus-calendar-event-dot {
+  background-color: var(--color-text-on-gold) !important;
+}
+
+/* Select Personalizado NEXUS - Estilo Preline */
+.nexus-select-wrapper {
+  position: relative !important;
+  width: 100% !important;
+}
+
+.nexus-select-label {
+  display: block !important;
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nexus-select-required {
+  color: var(--color-primary-gold) !important;
+  margin-left: 0.25rem !important;
+}
+
+.nexus-select-trigger {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.875rem 1rem !important;
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border: 2px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--border-radius-global) !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  backdrop-filter: blur(10px) !important;
+  position: relative !important;
+}
+
+.nexus-select-trigger:hover {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  background-color: rgba(212, 175, 55, 0.08) !important;
+}
+
+.nexus-select-trigger.open {
+  border-color: var(--color-primary-gold) !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1), 0 0 20px rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-select-value {
+  color: var(--color-text-primary) !important;
+  font-size: 0.875rem !important;
+  flex: 1 !important;
+  text-align: left !important;
+}
+
+.nexus-select-value.placeholder {
+  color: var(--color-text-secondary) !important;
+}
+
+.nexus-select-icon {
+  color: var(--color-primary-gold) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: 0.5rem !important;
+}
+
+.nexus-select-dropdown {
+  position: absolute !important;
+  top: calc(100% + 0.5rem) !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background-color: var(--color-surface) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: var(--border-radius-global) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+  max-height: 300px !important;
+}
+
+.nexus-select-search {
+  padding: 0.75rem !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-select-search-input {
+  width: 100% !important;
+  padding: 0.5rem 0.75rem !important;
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--border-radius-global) !important;
+  color: var(--color-text-primary) !important;
+  font-size: 0.875rem !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-select-search-input:focus {
+  outline: none !important;
+  border-color: var(--color-primary-gold) !important;
+  background-color: rgba(212, 175, 55, 0.08) !important;
+}
+
+.nexus-select-search-input::placeholder {
+  color: var(--color-text-secondary) !important;
+}
+
+.nexus-select-options {
+  max-height: 240px !important;
+  overflow-y: auto !important;
+  padding: 0.5rem 0 !important;
+}
+
+.nexus-select-options::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.nexus-select-options::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.nexus-select-options::-webkit-scrollbar-thumb {
+  background: var(--color-primary-gold) !important;
+  border-radius: 3px !important;
+}
+
+.nexus-select-options::-webkit-scrollbar-thumb:hover {
+  background: #f4d03f !important;
+}
+
+.nexus-select-option {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.75rem 1rem !important;
+  cursor: pointer !important;
+  transition: var(--transition-fast) !important;
+  color: var(--color-text-primary) !important;
+  font-size: 0.875rem !important;
+}
+
+.nexus-select-option:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+.nexus-select-option.selected {
+  background-color: rgba(212, 175, 55, 0.15) !important;
+  color: var(--color-primary-gold) !important;
+  font-weight: 600 !important;
+}
+
+.nexus-select-option-label {
+  flex: 1 !important;
+}
+
+.nexus-select-option-check {
+  color: var(--color-primary-gold) !important;
+  margin-left: 0.5rem !important;
+}
+
+.nexus-select-empty {
+  padding: 1rem !important;
+  text-align: center !important;
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+}
+
+/* DatePicker Personalizado NEXUS */
+.nexus-datepicker {
+  position: relative !important;
+}
+
+.nexus-datepicker-input {
+  position: relative !important;
+  cursor: pointer !important;
+}
+
+.nexus-datepicker-dropdown {
+  position: absolute !important;
+  top: calc(100% + 0.5rem) !important;
+  left: 0 !important;
+  z-index: 1000 !important;
+  background-color: var(--color-surface) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: var(--border-radius-global) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  padding: 1rem !important;
+  min-width: 280px !important;
+}
+
+.nexus-datepicker-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.75rem !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-datepicker-nav-button {
+  background-color: transparent !important;
+  color: var(--color-primary-gold) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-datepicker-nav-button:hover {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+}
+
+.nexus-datepicker-month-name {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  text-transform: capitalize !important;
+}
+
+.nexus-datepicker-weekdays {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0.25rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nexus-datepicker-weekday {
+  text-align: center !important;
+  padding: 0.5rem 0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.nexus-datepicker-days-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 0.25rem !important;
+}
+
+.nexus-datepicker-day-cell {
+  aspect-ratio: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--border-radius-global) !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  min-height: 2.5rem !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 2px solid transparent !important;
+}
+
+.nexus-datepicker-day-cell.empty {
+  visibility: hidden !important;
+  cursor: default !important;
+}
+
+.nexus-datepicker-day-cell:hover:not(.empty):not(:disabled) {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+.nexus-datepicker-day-cell.today {
+  border-color: var(--color-text-primary) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.nexus-datepicker-day-cell.selected {
+  background-color: var(--color-primary-gold) !important;
+  border-color: var(--color-primary-gold) !important;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5) !important;
+}
+
+.nexus-datepicker-day-cell.selected .nexus-datepicker-day-number {
+  color: var(--color-text-on-gold) !important;
+  font-weight: 700 !important;
+}
+
+.nexus-datepicker-day-number {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.nexus-datepicker-footer {
+  margin-top: 0.75rem !important;
+  padding-top: 0.75rem !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.nexus-datepicker-today-button {
+  background-color: transparent !important;
+  color: var(--color-primary-gold) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-datepicker-today-button:hover {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+}
+
+/* Responsive Calendario */
+@media (max-width: 768px) {
+  .nexus-calendar-wrapper {
+    padding: 1.5rem !important;
+  }
+  
+  .nexus-calendar-month-name {
+    font-size: 1.25rem !important;
+  }
+  
+  .nexus-calendar-day-cell {
+    min-height: 3rem !important;
+  }
+  
+  .nexus-calendar-day-number {
+    font-size: 0.875rem !important;
+  }
+  
+  .nexus-calendar-weekday {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 0 !important;
+  }
+}
+
+/* Modal de Producto NEXUS */
+.nexus-modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+  z-index: 9998 !important;
+}
+
+.nexus-modal-container {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999 !important;
+  max-width: 800px !important;
+  width: 90% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+.nexus-modal-content {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--border-radius-global) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.2) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.nexus-modal-close {
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  z-index: 10 !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  border-radius: 50% !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--color-primary-gold) !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.nexus-modal-close:hover {
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5) !important;
+}
+
+.nexus-modal-image-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  height: 300px !important;
+  overflow: hidden !important;
+}
+
+.nexus-modal-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.nexus-modal-image-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)) !important;
+}
+
+.nexus-modal-badge {
+  position: absolute !important;
+  top: 1rem !important;
+  left: 1rem !important;
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--border-radius-global) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4) !important;
+}
+
+.nexus-modal-body {
+  padding: 2rem !important;
+}
+
+.nexus-modal-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-modal-title {
+  color: var(--color-primary-gold) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1.2px !important;
+  margin: 0 !important;
+}
+
+.nexus-modal-price {
+  background-color: rgba(212, 175, 55, 0.15) !important;
+  color: var(--color-primary-gold) !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  border: 2px solid var(--color-primary-gold) !important;
+}
+
+.nexus-modal-description {
+  margin-bottom: 1.5rem !important;
+}
+
+.nexus-modal-section-title {
+  color: var(--color-text-primary) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.nexus-modal-text {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.nexus-modal-details {
+  margin-bottom: 1.5rem !important;
+  padding: 1rem !important;
+  background-color: rgba(212, 175, 55, 0.05) !important;
+  border-radius: var(--border-radius-global) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.nexus-modal-details-grid {
+  display: grid !important;
+  gap: 0.75rem !important;
+}
+
+.nexus-modal-detail-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.nexus-modal-detail-label {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+.nexus-modal-detail-value {
+  color: var(--color-primary-gold) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+}
+
+.nexus-modal-info {
+  margin-bottom: 1.5rem !important;
+  padding: 1rem !important;
+  background-color: rgba(212, 175, 55, 0.03) !important;
+  border-radius: var(--border-radius-global) !important;
+  border-left: 3px solid var(--color-primary-gold) !important;
+}
+
+.nexus-modal-info-text {
+  color: var(--color-text-secondary) !important;
+  font-size: 0.875rem !important;
+  margin: 0.5rem 0 !important;
+  line-height: 1.5 !important;
+}
+
+.nexus-modal-actions {
+  display: flex !important;
+  gap: 1rem !important;
+  margin-top: 2rem !important;
+}
+
+.nexus-modal-button-primary {
+  flex: 1 !important;
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  border: none !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  box-shadow: var(--shadow-gold) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+}
+
+.nexus-modal-button-primary:hover {
+  background-color: #f4d03f !important;
+  box-shadow: var(--shadow-gold-hover) !important;
+}
+
+.nexus-modal-button-secondary {
+  flex: 0.5 !important;
+  background-color: transparent !important;
+  color: var(--color-primary-gold) !important;
+  border: 2px solid var(--color-primary-gold) !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+}
+
+.nexus-modal-button-secondary:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+.nexus-modal-button-close-full {
+  width: 100% !important;
+  background-color: var(--color-primary-gold) !important;
+  color: var(--color-text-on-gold) !important;
+  border: none !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: var(--border-radius-global) !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: var(--transition-normal) !important;
+  box-shadow: var(--shadow-gold) !important;
+}
+
+.nexus-modal-button-close-full:hover {
+  background-color: #f4d03f !important;
+  box-shadow: var(--shadow-gold-hover) !important;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+  .nexus-modal-container {
+    width: 95% !important;
+    max-height: 95vh !important;
+  }
+  
+  .nexus-modal-image-wrapper {
+    height: 200px !important;
+  }
+  
+  .nexus-modal-body {
+    padding: 1.5rem !important;
+  }
+  
+  .nexus-modal-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .nexus-modal-price {
+    font-size: 1.25rem !important;
+    padding: 0.4rem 1rem !important;
+  }
+  
+  .nexus-modal-actions {
+    flex-direction: column !important;
+  }
+  
+  .nexus-modal-button-primary,
+  .nexus-modal-button-secondary {
+    flex: 1 !important;
+  }
+}
+
+/* ========================================
+   MEJORAS RESPONSIVE - ALTA PRIORIDAD
+   ======================================== */
+
+/* 🔴 BREAKPOINT MÓVILES PEQUEÑOS (< 480px) */
+@media (max-width: 480px) {
+  /* Tipografía */
+  .nexus-menu-title,
+  .nexus-eventos-title,
+  .nexus-reservas-title {
+    font-size: 2rem !important;
+  }
+  
+  .hero-text {
+    font-size: 2rem !important;
+  }
+  
+  .nexus-menu-subtitle,
+  .nexus-eventos-subtitle,
+  .nexus-reservas-subtitle {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Grids - Forzar 1 columna */
+  .nexus-events-grid,
+  .nexus-gallery-grid,
+  .nexus-menu-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  /* Touch Targets - Mínimo 44px */
+  button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-white,
+  .nexus-menu-tab,
+  .nexus-calendar-nav-button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  .nexus-calendar-day-cell {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Padding reducido */
+  .nexus-menu-container,
+  .nexus-eventos-container,
+  .nexus-reservas-container {
+    padding: 2rem 0.75rem !important;
+  }
+  
+  .nexus-calendar-section,
+  .nexus-reservation-form-container,
+  .nexus-info-card,
+  .nexus-policies-card,
+  .nexus-events-sidebar {
+    padding: 1rem !important;
+  }
+  
+  /* Botones más grandes para touch */
+  .btn-primary,
+  .btn-secondary,
+  .btn-white {
+    padding: 1rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Hero ajustes */
+  .hero-button-wrapper {
+    width: 100% !important;
+  }
+  
+  .hero-button-wrapper .btn-primary,
+  .hero-button-wrapper .btn-white {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  /* Footer */
+  .nexus-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  
+  .nexus-footer-legal-links {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Modal */
+  .nexus-modal-container {
+    width: 98% !important;
+    margin: 0 !important;
+  }
+  
+  .nexus-modal-body {
+    padding: 1rem !important;
+  }
+  
+  /* Tabs scrollables */
+  .nexus-menu-tabs {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  .nexus-menu-tab {
+    flex-shrink: 0 !important;
+    min-width: fit-content !important;
+  }
+}
+
+/* 🟡 HERO SECTION RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-section,
+  section.h-screen {
+    min-height: 80vh !important;
+    height: auto !important;
+    padding: 6rem 1rem 4rem !important;
+  }
+  
+  .hero-text {
+    font-size: 2.5rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+  
+  .hero-buttons-container {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+  }
+  
+  .hero-button-wrapper {
+    width: 100% !important;
+  }
+  
+  .hero-button-wrapper a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* 🟢 FOOTER RESPONSIVE */
+@media (max-width: 1024px) {
+  .nexus-footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nexus-footer {
+    padding: 3rem 0 2rem !important;
+  }
+  
+  .nexus-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  
+  .nexus-footer-section {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  
+  .nexus-footer-social-icons {
+    justify-content: center !important;
+  }
+  
+  .nexus-footer-hours-item,
+  .nexus-footer-contact-item {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+  }
+  
+  .nexus-footer-newsletter-form {
+    max-width: 400px !important;
+    margin: 0 auto !important;
+  }
+  
+  .nexus-footer-bottom-content {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .nexus-footer-legal-links {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* 🎯 GRIDS OPTIMIZADOS */
+@media (max-width: 768px) {
+  .nexus-events-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .nexus-gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  .nexus-vip-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nexus-gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 🎨 FORMULARIO - GAP AJUSTADO */
+@media (max-width: 768px) {
+  .nexus-form-grid-2 {
+    gap: 1rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nexus-form-grid-2 {
+    gap: 2rem !important;
+  }
+}
+
+/* Desktop - gap más razonable */
+@media (min-width: 1025px) {
+  .nexus-form-grid-2 {
+    gap: 2.5rem !important;
+  }
+}
+
+/* 📱 TOUCH TARGETS MEJORADOS */
+@media (max-width: 768px) {
+  /* Calendario */
+  .nexus-calendar-day-cell {
+    min-height: 44px !important;
+    padding: 0.5rem !important;
+  }
+  
+  .nexus-calendar-nav-button {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  
+  /* Select y DatePicker */
+  .nexus-select-option {
+    min-height: 44px !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  .nexus-select-trigger,
+  .nexus-datepicker {
+    min-height: 48px !important;
+  }
+  
+  /* Eventos lista */
+  .nexus-event-list-item {
+    min-height: 64px !important;
+    padding: 1rem !important;
+  }
+  
+  /* Botones generales */
+  .nexus-menu-item-button,
+  .nexus-form-submit-button,
+  .nexus-modal-button-close-full {
+    min-height: 48px !important;
+    padding: 1rem 1.5rem !important;
+  }
+}
+
+/* 🌐 OVERFLOW PREVENTION */
+body {
+  overflow-x: hidden !important;
+}
+
+.nexus-menu-container,
+.nexus-eventos-container,
+.nexus-reservas-container,
+.nexus-footer-container {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
 }
 
 /* Responsive */

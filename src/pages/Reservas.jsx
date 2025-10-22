@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, Users, Phone, Mail, MapPin, Clock, Crown } from 'lucide-react'
+import DatePicker from '../components/DatePicker'
+import Select from '../components/Select'
 
 const Reservas = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +12,7 @@ const Reservas = () => {
     fecha: '',
     hora: '',
     personas: '',
-    tipoReserva: 'general',
+    tipoReserva: '',
     mensaje: ''
   })
 
@@ -134,78 +136,76 @@ const Reservas = () => {
                     <label className="nexus-form-label">
                       Fecha *
                     </label>
-                    <input
-                      type="date"
+                    <DatePicker
                       name="fecha"
                       value={formData.fecha}
                       onChange={handleChange}
                       required
-                      className="nexus-form-input"
                     />
                   </motion.div>
 
                   <motion.div className="nexus-form-field" variants={itemVariants}>
-                    <label className="nexus-form-label">
-                      Hora *
-                    </label>
-                    <select
+                    <Select
+                      label="Hora"
                       name="hora"
                       value={formData.hora}
                       onChange={handleChange}
                       required
-                      className="nexus-form-select"
-                    >
-                      <option value="">Selecciona hora</option>
-                      <option value="21:00">21:00</option>
-                      <option value="21:30">21:30</option>
-                      <option value="22:00">22:00</option>
-                      <option value="22:30">22:30</option>
-                      <option value="23:00">23:00</option>
-                      <option value="23:30">23:30</option>
-                    </select>
+                      placeholder="Selecciona hora"
+                      options={[
+                        { value: '21:00', label: '21:00' },
+                        { value: '21:30', label: '21:30' },
+                        { value: '22:00', label: '22:00' },
+                        { value: '22:30', label: '22:30' },
+                        { value: '23:00', label: '23:00' },
+                        { value: '23:30', label: '23:30' },
+                        { value: '00:00', label: '00:00' },
+                        { value: '00:30', label: '00:30' },
+                      ]}
+                    />
                   </motion.div>
                 </div>
 
                 <div className="nexus-form-grid-2">
                   <motion.div className="nexus-form-field" variants={itemVariants}>
-                    <label className="nexus-form-label">
-                      Número de Personas *
-                    </label>
-                    <select
+                    <Select
+                      label="Número de Personas"
                       name="personas"
                       value={formData.personas}
                       onChange={handleChange}
                       required
-                      className="nexus-form-select"
-                    >
-                      <option value="">Selecciona</option>
-                      <option value="1">1 persona</option>
-                      <option value="2">2 personas</option>
-                      <option value="3">3 personas</option>
-                      <option value="4">4 personas</option>
-                      <option value="5">5 personas</option>
-                      <option value="6">6 personas</option>
-                      <option value="7">7 personas</option>
-                      <option value="8">8 personas</option>
-                      <option value="9+">9+ personas</option>
-                    </select>
+                      placeholder="Selecciona"
+                      options={[
+                        { value: '1', label: '1 persona' },
+                        { value: '2', label: '2 personas' },
+                        { value: '3', label: '3 personas' },
+                        { value: '4', label: '4 personas' },
+                        { value: '5', label: '5 personas' },
+                        { value: '6', label: '6 personas' },
+                        { value: '7', label: '7 personas' },
+                        { value: '8', label: '8 personas' },
+                        { value: '9', label: '9 personas' },
+                        { value: '10', label: '10 personas' },
+                        { value: '11+', label: '11+ personas' },
+                      ]}
+                    />
                   </motion.div>
 
                   <motion.div className="nexus-form-field" variants={itemVariants}>
-                    <label className="nexus-form-label">
-                      Tipo de Reserva *
-                    </label>
-                    <select
+                    <Select
+                      label="Tipo de Reserva"
                       name="tipoReserva"
                       value={formData.tipoReserva}
                       onChange={handleChange}
                       required
-                      className="nexus-form-select"
-                    >
-                      <option value="general">General</option>
-                      <option value="vip">VIP</option>
-                      <option value="premium">Premium</option>
-                    </select>
+                      placeholder="Selecciona tipo"
+                      options={[
+                        { value: 'general', label: 'General' },
+                        { value: 'vip', label: 'VIP' },
+                        { value: 'premium', label: 'Premium' },
+                        { value: 'exclusive', label: 'Exclusive' },
+                      ]}
+                    />
                   </motion.div>
                 </div>
 

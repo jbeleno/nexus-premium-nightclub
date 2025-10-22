@@ -500,11 +500,6 @@ a:hover {
   color: var(--color-white);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
   font-weight: 500;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius-lg);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .hero-subtitle-gold {
@@ -811,7 +806,6 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: var(--transition-normal);
   position: relative;
-  group: hover;
 }
 
 .menu-item-card:hover {

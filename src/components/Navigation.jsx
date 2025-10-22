@@ -37,7 +37,6 @@ const Navigation = () => {
   const linkVariants = {
     hover: {
       scale: 1.05,
-      textShadow: "0 0 10px currentColor",
       transition: { duration: 0.2 }
     }
   }

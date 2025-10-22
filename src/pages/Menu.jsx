@@ -2,9 +2,22 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Wine, Coffee, Crown, Flame } from 'lucide-react'
 import imgExample from '../assets/images/img.jpg'
+import ProductModal from '../components/ProductModal'
 
 const Menu = () => {
   const [activeTab, setActiveTab] = useState('cocktails')
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  
+  const handleOpenModal = (product) => {
+    setSelectedProduct(product)
+    setIsModalOpen(true)
+  }
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedProduct(null), 300)
+  }
 
   const tabs = [
     { id: 'cocktails', name: 'Cócteles', icon: Wine },
@@ -220,6 +233,7 @@ const Menu = () => {
 
         {/* Menu Items */}
         <motion.div
+          key={activeTab}
           className="nexus-menu-grid"
           variants={containerVariants}
           initial="hidden"
@@ -249,6 +263,7 @@ const Menu = () => {
                 <p className="nexus-menu-item-description">{item.description}</p>
                 <motion.button
                   className="nexus-menu-item-button"
+                  onClick={() => handleOpenModal(item)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -283,6 +298,13 @@ const Menu = () => {
           </motion.button>
         </motion.div>
       </div>
+      
+      {/* Modal de Producto */}
+      <ProductModal 
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        product={selectedProduct}
+      />
     </div>
   )
 }

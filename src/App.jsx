@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 // Componentes
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
+import ScrollToTop from './utils/ScrollToTop'
 
 // Páginas
 import Home from './pages/Home'
@@ -15,6 +16,7 @@ import Eventos from './pages/Eventos'
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <Navigation />
       
       <main>

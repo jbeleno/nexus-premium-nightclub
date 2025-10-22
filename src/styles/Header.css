@@ -69,8 +69,12 @@
 }
 
 .navigation-link:hover {
-  color: var(--color-primary-gold) !important;
-  text-shadow: 0 0 10px currentColor !important;
+  color: #ffffff !important;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4) !important;
+  transform: scale(1.05) !important;
 }
 
 .navigation-link.active {
@@ -176,6 +180,10 @@
 .navigation-mobile-link:hover {
   color: #ffffff !important;
   background-color: #374151 !important;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6) !important;
+  transform: translateX(5px) !important;
 }
 
 .navigation-mobile-link.active {

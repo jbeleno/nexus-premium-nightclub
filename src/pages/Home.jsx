@@ -80,7 +80,7 @@ const Home = () => {
   return (
     <div className="min-h-screen page-container">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
+      <section className="hero-section relative h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
         {/* Fondo Silk animado */}
         <div className="absolute inset-0 z-0">
           <Silk
@@ -107,7 +107,7 @@ const Home = () => {
                 NEXUS
               </span>
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl mb-8 font-light">
+            <p className="hero-subtitle text-xl md:text-2xl lg:text-3xl mb-8 font-light">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 animate-pulse-neon">
                 La experiencia nocturna más exclusiva de la ciudad
               </span>
@@ -116,7 +116,7 @@ const Home = () => {
 
           {/* Botones CTA - Refactorizado */}
           <motion.div
-            className="hero-buttons-container"
+            className="hero-buttons-container flex flex-wrap gap-4 justify-center"
             variants={itemVariants}
           >
             {/* Botón Principal */}
@@ -142,7 +142,7 @@ const Home = () => {
             >
               <Link
                 to="/eventos"
-                className="btn-secondary inline-flex items-center gap-2"
+                className="btn-white inline-flex items-center gap-2"
               >
                 <Play size={20} />
                 Ver Eventos

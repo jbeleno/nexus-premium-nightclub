@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Calendar, Clock, MapPin, Music, Users, Star } from 'lucide-react'
+import { Calendar as CalendarIcon, Clock, MapPin, Music, Users, Star } from 'lucide-react'
 import imgExample from '../assets/images/img.jpg'
+import Calendar from '../components/Calendar'
 
 const Eventos = () => {
   const [selectedDate, setSelectedDate] = useState(null)
   const [selectedEvent, setSelectedEvent] = useState(null)
+  const eventDetailRef = useRef(null)
 
   // Datos de ejemplo para eventos
   const events = [
@@ -55,25 +57,32 @@ const Eventos = () => {
     }
   ]
 
-  // Generar días del mes actual
-  const currentDate = new Date()
-  const currentMonth = currentDate.getMonth()
-  const currentYear = currentDate.getFullYear()
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
-  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay()
+  // Scroll suave hacia los detalles del evento cuando se selecciona
+  useEffect(() => {
+    if (selectedEvent && eventDetailRef.current) {
+      // Pequeño delay para que la animación se complete
+      setTimeout(() => {
+        const element = eventDetailRef.current
+        const headerOffset = 100 // Offset para el header fijo
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
-  const days = []
-  for (let i = 0; i < firstDayOfMonth; i++) {
-    days.push(null)
-  }
-  for (let i = 1; i <= daysInMonth; i++) {
-    days.push(i)
-  }
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }, 100)
+    }
+  }, [selectedEvent])
 
-  const getEventsForDate = (day) => {
-    if (!day) return []
-    const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
-    return events.filter(event => event.date === dateStr)
+  // Manejar selección de fecha en el calendario
+  const handleDateSelect = (day, dayEvents) => {
+    setSelectedDate(day)
+    if (dayEvents.length > 0) {
+      setSelectedEvent(dayEvents[0])
+    } else {
+      setSelectedEvent(null)
+    }
   }
 
   const containerVariants = {
@@ -120,64 +129,23 @@ const Eventos = () => {
             initial="hidden"
             animate="visible"
           >
-            <motion.div
-              className="nexus-calendar-section"
-              variants={itemVariants}
-            >
-              <h2 className="nexus-calendar-header">
-                <Calendar size={24} />
-                Calendario de Eventos
-              </h2>
-
-              <div className="nexus-calendar-month-header">
-                <h3 className="nexus-calendar-month-title">
-                  {currentDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}
-                </h3>
+            <motion.div variants={itemVariants}>
+              <div className="nexus-calendar-header" style={{ marginBottom: '1.5rem' }}>
+                <CalendarIcon size={24} />
+                <span style={{ marginLeft: '0.75rem' }}>Calendario de Eventos</span>
               </div>
-
-              {/* Días de la semana */}
-              <div className="nexus-calendar-weekdays">
-                {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map(day => (
-                  <div key={day} className="nexus-calendar-weekday">
-                    {day}
-                  </div>
-                ))}
-              </div>
-
-              {/* Días del mes */}
-              <div className="nexus-calendar-grid">
-                {days.map((day, index) => {
-                  const dayEvents = getEventsForDate(day)
-                  const hasEvents = dayEvents.length > 0
-                  
-                  return (
-                    <motion.div
-                      key={index}
-                      className={`nexus-calendar-day ${day === null ? 'empty' : ''} ${hasEvents ? 'has-event' : ''} ${selectedDate === day ? 'selected' : ''}`}
-                      variants={itemVariants}
-                      whileHover={{ scale: hasEvents ? 1.05 : 1.02 }}
-                      onClick={() => {
-                        if (day && hasEvents) {
-                          setSelectedDate(day)
-                          setSelectedEvent(dayEvents[0])
-                        }
-                      }}
-                    >
-                      {day && (
-                        <>
-                          {day}
-                          {hasEvents && <div className="nexus-event-indicator" />}
-                        </>
-                      )}
-                    </motion.div>
-                  )
-                })}
-              </div>
+              
+              <Calendar 
+                events={events}
+                onDateSelect={handleDateSelect}
+                selectedDate={selectedDate}
+              />
             </motion.div>
 
             {/* Evento seleccionado */}
             {selectedEvent && (
               <motion.div
+                ref={eventDetailRef}
                 className="nexus-event-detail-card"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -231,7 +199,7 @@ const Eventos = () => {
               variants={itemVariants}
             >
               <h2 className="nexus-events-sidebar-title">
-                <Calendar size={24} />
+                <CalendarIcon size={24} />
                 Próximos Eventos
               </h2>
 
@@ -254,7 +222,7 @@ const Eventos = () => {
                       <div className="nexus-event-list-item-content">
                         <h3 className="nexus-event-list-item-title">{event.title}</h3>
                         <div className="nexus-event-list-item-date">
-                          <Calendar size={14} />
+                          <CalendarIcon size={14} />
                           <span>{new Date(event.date).toLocaleDateString('es-ES')}</span>
                           <Clock size={14} />
                           <span>{event.time}</span>
