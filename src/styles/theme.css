@@ -1597,7 +1597,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.5rem !important;
   color: var(--color-primary-gold) !important;
   font-family: 'Bebas Neue', sans-serif !important;
-  font-size: 1.25rem !important;
+  font-size: 1.5rem !important;
   font-weight: 400 !important;
   letter-spacing: 1.1px !important;
 }
@@ -1638,7 +1638,7 @@ h1, h2, h3, h4, h5, h6 {
 .nexus-event-list-item-title {
   color: var(--color-text-primary) !important;
   font-family: 'Bebas Neue', sans-serif !important;
-  font-size: 1rem !important;
+  font-size: 1.125rem !important;
   font-weight: 400 !important;
   letter-spacing: 1.1px !important;
   margin-bottom: 0.25rem !important;
@@ -1646,7 +1646,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nexus-event-list-item-date {
   color: var(--color-text-secondary) !important;
-  font-size: 0.75rem !important;
+  font-size: 0.875rem !important;
   margin-bottom: 0.25rem !important;
   display: flex !important;
   align-items: center !important;
@@ -1655,7 +1655,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nexus-event-list-item-dj {
   color: var(--color-text-secondary) !important;
-  font-size: 0.75rem !important;
+  font-size: 0.875rem !important;
   margin-bottom: 0.5rem !important;
 }
 
@@ -1664,7 +1664,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-on-gold) !important;
   padding: 0.25rem 0.75rem !important;
   border-radius: var(--border-radius-global) !important;
-  font-size: 0.75rem !important;
+  font-size: 0.875rem !important;
   font-weight: 600 !important;
   display: inline-block !important;
 }
@@ -1711,7 +1711,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nexus-events-info-item {
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   gap: 0.75rem !important;
   margin-bottom: 1rem !important;
 }
@@ -1722,6 +1722,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--color-primary-gold) !important;
   border-radius: 50% !important;
   flex-shrink: 0 !important;
+  margin-top: 0.4rem !important;
 }
 
 .nexus-events-info-text {
@@ -3091,12 +3092,12 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .nexus-event-list-item-title {
-    font-size: 0.875rem !important;
+    font-size: 1rem !important;
   }
   
   /* Events Sidebar */
   .nexus-events-sidebar-title {
-    font-size: 1.125rem !important;
+    font-size: 1.25rem !important;
     margin-bottom: 1rem !important;
   }
   
