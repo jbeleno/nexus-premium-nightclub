@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu as MenuIcon, X } from 'lucide-react'
+import { NAV_ITEMS } from '../constants/routes'
 import '../styles/Header.css'
 
 const Navigation = () => {
@@ -18,12 +19,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Menú', path: '/menu' },
-    { name: 'Eventos', path: '/eventos' },
-    { name: 'Reservas', path: '/reservas' }
-  ]
+  const navItems = NAV_ITEMS
 
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
@@ -61,6 +57,7 @@ const Navigation = () => {
               <Link 
                 to="/" 
                 className="navigation-logo"
+                aria-label="NEXUS - Ir al inicio"
               >
                 NEXUS
               </Link>
@@ -79,6 +76,7 @@ const Navigation = () => {
                     className={`navigation-link ${
                       location.pathname === item.path ? 'active' : ''
                     }`}
+                    aria-current={location.pathname === item.path ? 'page' : undefined}
                   >
                     {item.name}
                   </Link>
@@ -93,8 +91,9 @@ const Navigation = () => {
                 <Link
                   to="/reservas"
                   className="navigation-cta"
+                  aria-label="Ir a página de reservas"
                 >
-                  Reservar VIP
+                  Reserva Ya
                 </Link>
               </motion.div>
             </div>
@@ -104,8 +103,11 @@ const Navigation = () => {
               className="navigation-mobile-button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.9 }}
+              aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+              {isMobileMenuOpen ? <X size={24} aria-hidden="true" /> : <MenuIcon size={24} aria-hidden="true" />}
             </motion.button>
           </div>
         </div>
@@ -125,15 +127,20 @@ const Navigation = () => {
             <div 
               className="navigation-mobile-backdrop"
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-hidden="true"
             />
             
             {/* Mobile Menu */}
             <motion.div
+              id="mobile-menu"
               className="navigation-mobile-menu"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menú de navegación"
             >
               <div className="navigation-mobile-content">
                 {navItems.map((item, index) => (
@@ -165,7 +172,7 @@ const Navigation = () => {
                     className="navigation-mobile-cta"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Reservar VIP
+                    Reserva Ya
                   </Link>
                 </motion.div>
               </div>

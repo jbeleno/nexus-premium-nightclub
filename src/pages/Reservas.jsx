@@ -1,33 +1,51 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, Users, Phone, Mail, MapPin, Clock, Crown } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import DatePicker from '../components/DatePicker'
 import Select from '../components/Select'
+import SEO from '../components/SEO'
+import { reservationSchema } from '../services/validation/reservationSchema'
+import { reservationsService } from '../services/api/reservations'
+import { useReservationStore } from '../store/useReservationStore'
+import { useToast } from '../hooks/useToast'
 
 const Reservas = () => {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    telefono: '',
-    email: '',
-    fecha: '',
-    hora: '',
-    personas: '',
-    tipoReserva: '',
-    mensaje: ''
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const addReservation = useReservationStore((state) => state.addReservation)
+  const toast = useToast()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    reset
+  } = useForm({
+    resolver: zodResolver(reservationSchema),
+    mode: 'onBlur'
   })
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+  const onSubmit = async (data) => {
+    setIsSubmitting(true)
+    const loadingToast = toast.loading('Enviando reserva...')
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Aquí iría la lógica para enviar la reserva
-    console.log('Reserva enviada:', formData)
-    alert('¡Reserva enviada exitosamente! Te contactaremos pronto.')
+    try {
+      const { data: reservation, error } = await reservationsService.create(data)
+      
+      if (error) {
+        throw new Error(error)
+      }
+
+      addReservation(reservation)
+      toast.success('¡Reserva enviada exitosamente! Te contactaremos pronto.')
+      reset()
+    } catch (error) {
+      toast.error(error.message || 'Error al enviar la reserva. Intenta de nuevo.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const containerVariants = {
@@ -51,6 +69,10 @@ const Reservas = () => {
 
   return (
     <div className="nexus-reservas-page">
+      <SEO 
+        title="Reservas VIP"
+        description="Reserva tu mesa VIP en NEXUS Premium Nightclub. Servicio exclusivo, botellas premium y la mejor experiencia nocturna de la ciudad."
+      />
       <div className="nexus-reservas-container">
         {/* Header */}
         <motion.div
@@ -91,13 +113,17 @@ const Reservas = () => {
                     </label>
                     <input
                       type="text"
-                      name="nombre"
-                      value={formData.nombre}
-                      onChange={handleChange}
-                      required
-                      className="nexus-form-input"
+                      {...register('nombre')}
+                      className={`nexus-form-input ${errors.nombre ? 'border-red-500' : ''}`}
                       placeholder="Tu nombre completo"
+                      aria-invalid={errors.nombre ? 'true' : 'false'}
+                      disabled={isSubmitting}
                     />
+                    {errors.nombre && (
+                      <p className="text-red-500 text-sm mt-1" role="alert">
+                        {errors.nombre.message}
+                      </p>
+                    )}
                   </motion.div>
 
                   <motion.div className="nexus-form-field" variants={itemVariants}>
@@ -106,13 +132,17 @@ const Reservas = () => {
                     </label>
                     <input
                       type="tel"
-                      name="telefono"
-                      value={formData.telefono}
-                      onChange={handleChange}
-                      required
-                      className="nexus-form-input"
+                      {...register('telefono')}
+                      className={`nexus-form-input ${errors.telefono ? 'border-red-500' : ''}`}
                       placeholder="+1 (555) 123-4567"
+                      aria-invalid={errors.telefono ? 'true' : 'false'}
+                      disabled={isSubmitting}
                     />
+                    {errors.telefono && (
+                      <p className="text-red-500 text-sm mt-1" role="alert">
+                        {errors.telefono.message}
+                      </p>
+                    )}
                   </motion.div>
                 </div>
 
@@ -122,13 +152,17 @@ const Reservas = () => {
                   </label>
                   <input
                     type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="nexus-form-input"
+                    {...register('email')}
+                    className={`nexus-form-input ${errors.email ? 'border-red-500' : ''}`}
                     placeholder="tu@email.com"
+                    aria-invalid={errors.email ? 'true' : 'false'}
+                    disabled={isSubmitting}
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1" role="alert">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </motion.div>
 
                 <div className="nexus-form-grid-2">
@@ -136,76 +170,97 @@ const Reservas = () => {
                     <label className="nexus-form-label">
                       Fecha *
                     </label>
-                    <DatePicker
-                      name="fecha"
-                      value={formData.fecha}
-                      onChange={handleChange}
-                      required
+                    <input
+                      type="date"
+                      {...register('fecha')}
+                      className={`nexus-form-input ${errors.fecha ? 'border-red-500' : ''}`}
+                      disabled={isSubmitting}
+                      min={new Date().toISOString().split('T')[0]}
                     />
+                    {errors.fecha && (
+                      <p className="text-red-500 text-sm mt-1" role="alert">
+                        {errors.fecha.message}
+                      </p>
+                    )}
                   </motion.div>
 
                   <motion.div className="nexus-form-field" variants={itemVariants}>
-                    <Select
-                      label="Hora"
-                      name="hora"
-                      value={formData.hora}
-                      onChange={handleChange}
-                      required
-                      placeholder="Selecciona hora"
-                      options={[
-                        { value: '21:00', label: '21:00' },
-                        { value: '21:30', label: '21:30' },
-                        { value: '22:00', label: '22:00' },
-                        { value: '22:30', label: '22:30' },
-                        { value: '23:00', label: '23:00' },
-                        { value: '23:30', label: '23:30' },
-                        { value: '00:00', label: '00:00' },
-                        { value: '00:30', label: '00:30' },
-                      ]}
-                    />
+                    <label className="nexus-form-label">
+                      Hora *
+                    </label>
+                    <select
+                      {...register('hora')}
+                      className={`nexus-form-select ${errors.hora ? 'border-red-500' : ''}`}
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Selecciona hora</option>
+                      <option value="21:00">21:00</option>
+                      <option value="21:30">21:30</option>
+                      <option value="22:00">22:00</option>
+                      <option value="22:30">22:30</option>
+                      <option value="23:00">23:00</option>
+                      <option value="23:30">23:30</option>
+                      <option value="00:00">00:00</option>
+                      <option value="00:30">00:30</option>
+                    </select>
+                    {errors.hora && (
+                      <p className="text-red-500 text-sm mt-1" role="alert">
+                        {errors.hora.message}
+                      </p>
+                    )}
                   </motion.div>
                 </div>
 
                 <div className="nexus-form-grid-2">
                   <motion.div className="nexus-form-field" variants={itemVariants}>
-                    <Select
-                      label="Número de Personas"
-                      name="personas"
-                      value={formData.personas}
-                      onChange={handleChange}
-                      required
-                      placeholder="Selecciona"
-                      options={[
-                        { value: '1', label: '1 persona' },
-                        { value: '2', label: '2 personas' },
-                        { value: '3', label: '3 personas' },
-                        { value: '4', label: '4 personas' },
-                        { value: '5', label: '5 personas' },
-                        { value: '6', label: '6 personas' },
-                        { value: '7', label: '7 personas' },
-                        { value: '8', label: '8 personas' },
-                        { value: '9', label: '9 personas' },
-                        { value: '10', label: '10 personas' },
-                        { value: '11+', label: '11+ personas' },
-                      ]}
-                    />
+                    <label className="nexus-form-label">
+                      Número de Personas *
+                    </label>
+                    <select
+                      {...register('personas')}
+                      className={`nexus-form-select ${errors.personas ? 'border-red-500' : ''}`}
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Selecciona</option>
+                      <option value="1">1 persona</option>
+                      <option value="2">2 personas</option>
+                      <option value="3">3 personas</option>
+                      <option value="4">4 personas</option>
+                      <option value="5">5 personas</option>
+                      <option value="6">6 personas</option>
+                      <option value="7">7 personas</option>
+                      <option value="8">8 personas</option>
+                      <option value="9">9 personas</option>
+                      <option value="10">10 personas</option>
+                      <option value="11+">11+ personas</option>
+                    </select>
+                    {errors.personas && (
+                      <p className="text-red-500 text-sm mt-1" role="alert">
+                        {errors.personas.message}
+                      </p>
+                    )}
                   </motion.div>
 
                   <motion.div className="nexus-form-field" variants={itemVariants}>
-                    <Select
-                      label="Tipo de Reserva"
-                      name="tipoReserva"
-                      value={formData.tipoReserva}
-                      onChange={handleChange}
-                      required
-                      placeholder="Selecciona tipo"
-                      options={[
-                        { value: 'general', label: 'General' },
-                        { value: 'vip', label: 'VIP' },
-                        { value: 'premium', label: 'Premium' },
-                        { value: 'exclusive', label: 'Exclusive' },
-                      ]}
-                    />
+                    <label className="nexus-form-label">
+                      Tipo de Reserva *
+                    </label>
+                    <select
+                      {...register('tipoReserva')}
+                      className={`nexus-form-select ${errors.tipoReserva ? 'border-red-500' : ''}`}
+                      disabled={isSubmitting}
+                    >
+                      <option value="">Selecciona tipo</option>
+                      <option value="general">General</option>
+                      <option value="vip">VIP</option>
+                      <option value="premium">Premium</option>
+                      <option value="exclusive">Exclusive</option>
+                    </select>
+                    {errors.tipoReserva && (
+                      <p className="text-red-500 text-sm mt-1" role="alert">
+                        {errors.tipoReserva.message}
+                      </p>
+                    )}
                   </motion.div>
                 </div>
 
@@ -214,22 +269,28 @@ const Reservas = () => {
                     Mensaje Adicional
                   </label>
                   <textarea
-                    name="mensaje"
-                    value={formData.mensaje}
-                    onChange={handleChange}
-                    className="nexus-form-textarea"
+                    {...register('mensaje')}
+                    className={`nexus-form-textarea ${errors.mensaje ? 'border-red-500' : ''}`}
                     placeholder="Cuéntanos sobre ocasión especial, preferencias de mesa, etc."
+                    disabled={isSubmitting}
                   />
+                  {errors.mensaje && (
+                    <p className="text-red-500 text-sm mt-1" role="alert">
+                      {errors.mensaje.message}
+                    </p>
+                  )}
                 </motion.div>
 
                 <motion.button
                   type="submit"
                   className="nexus-form-submit-button"
                   variants={itemVariants}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  disabled={isSubmitting}
+                  aria-label="Enviar reserva"
                 >
-                  Enviar Reserva
+                  {isSubmitting ? 'Enviando...' : 'Enviar Reserva'}
                 </motion.button>
               </form>
             </motion.div>

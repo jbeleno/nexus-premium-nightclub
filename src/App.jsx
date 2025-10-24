@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
-// Componentes
+// Componentes estáticos (se cargan inmediatamente)
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import ScrollToTop from './utils/ScrollToTop'
+import LoadingSpinner from './components/LoadingSpinner'
 
-// Páginas
-import Home from './pages/Home'
-import Menu from './pages/Menu'
-import Reservas from './pages/Reservas'
-import Eventos from './pages/Eventos'
+// Páginas con lazy loading (se cargan bajo demanda)
+const Home = lazy(() => import('./pages/Home'))
+const Menu = lazy(() => import('./pages/Menu'))
+const Reservas = lazy(() => import('./pages/Reservas'))
+const Eventos = lazy(() => import('./pages/Eventos'))
 
 function App() {
   return (
@@ -20,14 +21,16 @@ function App() {
       <Navigation />
       
       <main>
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/reservas" element={<Reservas />} />
-            <Route path="/eventos" element={<Eventos />} />
-          </Routes>
-        </AnimatePresence>
+        <Suspense fallback={<LoadingSpinner fullScreen message="Cargando..." />}>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/reservas" element={<Reservas />} />
+              <Route path="/eventos" element={<Eventos />} />
+            </Routes>
+          </AnimatePresence>
+        </Suspense>
       </main>
 
       <Footer />

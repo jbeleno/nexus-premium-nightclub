@@ -1,61 +1,15 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Play, Calendar, Star, Users } from 'lucide-react'
-import imgExample from '../assets/images/img.jpg'
-import fondoGaleria from '../assets/images/fondo_galeria.jpg'
 import Silk from '../components/Silk'
+import SEO from '../components/SEO'
+import { UPCOMING_EVENTS, GALLERY_ITEMS } from '../data/events'
 
 const Home = () => {
-  // Datos de ejemplo para los próximos eventos
-  const upcomingEvents = [
-    {
-      id: 1,
-      title: "Neon Dreams",
-      date: "15 Dic",
-      time: "22:00",
-      image: imgExample,
-      type: "DJ Internacional"
-    },
-    {
-      id: 2,
-      title: "Electric Nights",
-      date: "22 Dic",
-      time: "22:00",
-      image: imgExample,
-      type: "Live Performance"
-    },
-    {
-      id: 3,
-      title: "VIP Experience",
-      date: "29 Dic",
-      time: "21:00",
-      image: imgExample,
-      type: "Exclusive Event"
-    }
-  ]
-
-  // Datos de ejemplo para la galería
-  const galleryItems = [
-    {
-      id: 1,
-      type: "video",
-      thumbnail: imgExample,
-      title: "Noche Épica"
-    },
-    {
-      id: 2,
-      type: "image",
-      thumbnail: imgExample,
-      title: "DJ Session"
-    },
-    {
-      id: 3,
-      type: "video",
-      thumbnail: imgExample,
-      title: "VIP Lounge"
-    }
-  ]
+  // Usar solo los primeros 3 eventos
+  const upcomingEvents = UPCOMING_EVENTS.slice(0, 3)
+  const galleryItems = GALLERY_ITEMS
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -79,6 +33,10 @@ const Home = () => {
 
   return (
     <div className="min-h-screen page-container">
+      <SEO 
+        title="NEXUS Premium Nightclub"
+        description="La experiencia nocturna más exclusiva de la ciudad. DJs internacionales, servicio VIP, botellas premium y las mejores fiestas en NEXUS."
+      />
       {/* Hero Section */}
       <section className="hero-section relative h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
         {/* Fondo Silk animado */}
@@ -128,9 +86,10 @@ const Home = () => {
               <Link
                 to="/reservas"
                 className="btn-primary"
+                aria-label="Ir a página de reservas"
               >
-                <Calendar size={20} />
-                Reservar Ahora
+                <Calendar size={20} aria-hidden="true" />
+                Reserva Ya
               </Link>
             </motion.div>
             
@@ -143,8 +102,9 @@ const Home = () => {
               <Link
                 to="/eventos"
                 className="btn-white"
+                aria-label="Ir a página de eventos"
               >
-                <Play size={20} />
+                <Play size={20} aria-hidden="true" />
                 Ver Eventos
               </Link>
             </motion.div>
@@ -204,8 +164,9 @@ const Home = () => {
                 <div className="nexus-event-image-wrapper">
                   <img
                     src={event.image}
-                    alt={event.title}
+                    alt={`Evento ${event.title} en NEXUS`}
                     className="nexus-event-image"
+                    loading="lazy"
                   />
                   <div className="nexus-event-badge">
                     {event.type}
@@ -275,8 +236,9 @@ const Home = () => {
               >
                 <img
                   src={item.thumbnail}
-                  alt={item.title}
+                  alt={`${item.title} - Galería NEXUS`}
                   className="nexus-gallery-image"
+                  loading="lazy"
                 />
                 <div className="nexus-gallery-overlay">
                   <h3 className="nexus-gallery-item-title">{item.title}</h3>
@@ -360,7 +322,7 @@ const Home = () => {
                 to="/reservas"
                 className="btn-primary text-xl px-12 py-4"
               >
-                Reservar Experiencia VIP
+                Reserva Tu Experiencia VIP
               </Link>
             </motion.div>
           </motion.div>

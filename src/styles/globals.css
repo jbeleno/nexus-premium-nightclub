@@ -2012,3 +2012,106 @@ a:hover {
     padding-top: 1rem;
   }
 }
+
+/* ===================================
+   ACCESIBILIDAD
+   =================================== */
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent-gold);
+  color: var(--color-primary);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===================================
+   FORM SELECT STYLES
+   =================================== */
+
+.nexus-form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23D4AF37' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+.nexus-form-select option {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.nexus-form-input:disabled,
+.nexus-form-select:disabled,
+.nexus-form-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(30, 30, 30, 0.4);
+}
+
+.nexus-form-input.border-red-500,
+.nexus-form-select.border-red-500,
+.nexus-form-textarea.border-red-500 {
+  border-color: #ef4444;
+}
+
+/* ===================================
+   OPTIMIZACIONES DE RENDIMIENTO
+   =================================== */
+
+/* Reducir layout shifts con aspect ratios */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optimizar animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

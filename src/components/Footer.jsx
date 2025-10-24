@@ -32,7 +32,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="nexus-footer">
+    <footer className="nexus-footer" role="contentinfo">
       <div className="nexus-footer-container">
         <motion.div
           variants={containerVariants}
@@ -64,24 +64,27 @@ const Footer = () => {
                   className="nexus-footer-social-icon"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  aria-label="Síguenos en Instagram"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={20} aria-hidden="true" />
                 </motion.a>
                 <motion.a
                   href="#"
                   className="nexus-footer-social-icon"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  aria-label="Síguenos en Facebook"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={20} aria-hidden="true" />
                 </motion.a>
                 <motion.a
                   href="#"
                   className="nexus-footer-social-icon"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
+                  aria-label="Síguenos en Twitter"
                 >
-                  <Twitter size={20} />
+                  <Twitter size={20} aria-hidden="true" />
                 </motion.a>
               </div>
             </motion.div>
@@ -157,17 +160,20 @@ const Footer = () => {
               <p className="nexus-footer-description">
                 Recibe las últimas noticias sobre eventos exclusivos y ofertas VIP.
               </p>
-              <form className="nexus-footer-newsletter-form">
+              <form className="nexus-footer-newsletter-form" aria-label="Formulario de suscripción al newsletter">
                 <input
                   type="email"
                   placeholder="Tu email"
                   className="nexus-footer-newsletter-input"
+                  aria-label="Ingresa tu email para el newsletter"
+                  required
                 />
                 <motion.button
                   type="submit"
                   className="nexus-footer-newsletter-button"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Suscribirse al newsletter"
                 >
                   Suscribirse
                 </motion.button>
@@ -184,7 +190,7 @@ const Footer = () => {
               <p className="nexus-footer-copyright">
                 © 2024 NEXUS Premium Nightclub. Todos los derechos reservados.
               </p>
-              <div className="nexus-footer-legal-links">
+              <nav className="nexus-footer-legal-links" aria-label="Enlaces legales">
                 <a 
                   href="#" 
                   className="nexus-footer-legal-link"
@@ -203,7 +209,7 @@ const Footer = () => {
                 >
                   Cookies
                 </a>
-              </div>
+              </nav>
             </div>
           </motion.div>
         </motion.div>

@@ -14,10 +14,15 @@ A modern and elegant web application for a high-end nightclub, built with React.
 ## 🛠️ Tech Stack
 
 - **React.js** (via Vite) - Main framework
-- **React Router DOM** - Client-side routing
+- **React Router DOM** - Client-side routing with lazy loading
 - **Framer Motion** - Animations and transitions
 - **Three.js** - 3D graphics engine
 - **React Three Fiber** - 3D integration with React
+- **Zustand** - Global state management
+- **React Hook Form** - Form validation
+- **Zod** - Schema validation
+- **React Hot Toast** - Toast notifications
+- **React Helmet Async** - SEO optimization
 - **CSS Custom Properties** - Centralized theming system
 
 ## 📦 Quick Installation
@@ -150,31 +155,65 @@ The application will automatically open at `http://localhost:3000`
 - **CSS Variables**: Centralized system in `theme.css`
 - **Unique Components**: Classes with `nexus-` prefixes to avoid conflicts
 - **Responsive**: Optimized breakpoints for all devices
-- **Performance**: Optimized CSS and efficient components
-- **Accessibility**: Perfect contrast and optimized readability
+- **Performance**: Code splitting, lazy loading, and efficient bundle size
+- **Accessibility**: WCAG compliant with ARIA labels and focus management
+- **Form Validation**: Client-side validation with Zod schemas
+- **Error Handling**: Error boundaries for graceful error recovery
+- **SEO Optimized**: Meta tags and Open Graph support
+- **State Management**: Zustand for global state with persistence
 
 ## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── EventModal.jsx      # Weekly events modal
-│   ├── Footer.jsx          # Footer with information and newsletter
-│   ├── Navigation.jsx      # Responsive header navigation
-│   └── Silk.jsx            # Animated background component with shaders
+│   ├── Calendar.jsx           # Interactive event calendar
+│   ├── DatePicker.jsx         # Custom date picker
+│   ├── ErrorBoundary.jsx      # Error handling component
+│   ├── Footer.jsx             # Footer with information and newsletter
+│   ├── LoadingSpinner.jsx     # Loading state component
+│   ├── Navigation.jsx         # Responsive header navigation
+│   ├── OptimizedImage.jsx     # Image with lazy loading
+│   ├── ProductModal.jsx       # Product detail modal
+│   ├── SEO.jsx                # SEO meta tags component
+│   ├── Select.jsx             # Custom select component
+│   └── Silk.jsx               # Animated background with shaders
 ├── pages/
-│   ├── Home.jsx            # Main page with hero and events
-│   ├── Menu.jsx            # Pricing menu (not ordering)
-│   ├── Eventos.jsx        # Interactive events calendar
-│   └── Reservas.jsx       # VIP reservations form
+│   ├── Home.jsx               # Main page with hero and events
+│   ├── Menu.jsx               # Pricing menu (not ordering)
+│   ├── Eventos.jsx            # Interactive events calendar
+│   └── Reservas.jsx           # VIP reservations form with validation
+├── constants/
+│   ├── apiEndpoints.js        # API endpoint definitions
+│   ├── errorMessages.js       # Centralized error messages
+│   └── routes.js              # Route constants
+├── data/
+│   ├── events.js              # Event data
+│   └── menu.js                # Menu items and categories
+├── hooks/
+│   ├── useScrollLock.js       # Custom scroll lock hook
+│   └── useToast.js            # Toast notification hook
+├── services/
+│   ├── api/
+│   │   ├── client.js          # API client
+│   │   ├── events.js          # Events service
+│   │   └── reservations.js    # Reservations service
+│   └── validation/
+│       ├── contactSchema.js   # Contact form validation
+│       └── reservationSchema.js # Reservation form validation
+├── store/
+│   ├── useReservationStore.js # Reservation state management
+│   └── useUIStore.js          # UI state management
 ├── styles/
-│   ├── globals.css        # Global styles and CSS variables
-│   ├── Header.css         # Header-specific styles
-│   └── theme.css          # Centralized design system
+│   ├── globals.css            # Global styles and CSS variables
+│   ├── Header.css             # Header-specific styles
+│   └── theme.css              # Centralized design system
+├── utils/
+│   └── ScrollToTop.jsx        # Scroll restoration component
 └── assets/
     └── images/
-        ├── img.jpg        # Example image for products
-        └── fondo_galeria.jpg # Background for exclusive gallery
+        ├── img.jpg            # Example image for products
+        └── fondo_galeria.jpg  # Background for exclusive gallery
 ```
 
 ## 🎯 Highlighted Features
@@ -228,6 +267,49 @@ NEXUS Premium Nightclub represents the pinnacle of nightlife entertainment, comb
 ---
 
 ## 🔄 Latest Updates
+
+### **Version 2.0.0 - October 2024** 🎉
+
+#### 🏗️ **Arquitectura y Estado**
+- ✅ **Zustand State Management**: Gestión de estado global eficiente
+- ✅ **Service Layer**: Capa de servicios con API client y servicios específicos
+- ✅ **Custom Hooks**: Hooks personalizados para funcionalidades reutilizables
+- ✅ **Arquitectura Escalable**: Separación clara de responsabilidades
+
+#### 📝 **Validación y Formularios**
+- ✅ **React Hook Form**: Manejo avanzado de formularios
+- ✅ **Zod Schemas**: Validación robusta con esquemas tipados
+- ✅ **Toast Notifications**: Feedback visual con React Hot Toast
+- ✅ **Error Messages**: Mensajes de error centralizados y consistentes
+
+#### 🔒 **Manejo de Errores**
+- ✅ **Error Boundaries**: Recuperación elegante de errores
+- ✅ **Loading States**: Estados de carga personalizados
+- ✅ **Graceful Degradation**: Experiencia fluida ante fallos
+
+#### 🚀 **Rendimiento**
+- ✅ **Lazy Loading**: Carga diferida de rutas con React.lazy
+- ✅ **Code Splitting**: División automática de código por rutas
+- ✅ **Image Optimization**: Imágenes con lazy loading y aspectRatio
+- ✅ **Memoización**: Componentes optimizados con React.memo
+
+#### ♿ **Accesibilidad (WCAG 2.1)**
+- ✅ **ARIA Labels**: Etiquetas descriptivas en todos los componentes interactivos
+- ✅ **Keyboard Navigation**: Navegación completa por teclado
+- ✅ **Focus Management**: Gestión apropiada del foco
+- ✅ **Screen Reader Support**: Soporte para lectores de pantalla
+- ✅ **Semantic HTML**: Uso correcto de elementos semánticos
+
+#### 🔍 **SEO**
+- ✅ **React Helmet Async**: Meta tags dinámicos por página
+- ✅ **Open Graph**: Optimización para redes sociales
+- ✅ **Meta Descriptions**: Descripciones únicas por página
+- ✅ **Canonical URLs**: URLs canónicas para SEO
+
+#### 📊 **Organización de Datos**
+- ✅ **Data Layer**: Datos separados en archivos independientes
+- ✅ **Constants**: Constantes centralizadas (rutas, endpoints, mensajes)
+- ✅ **Type Safety**: Validación de datos con Zod
 
 ### **Version 1.1.0 - December 2024**
 - ✅ **Simplified Architecture**: Removed internationalization for streamlined experience

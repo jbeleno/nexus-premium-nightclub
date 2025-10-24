@@ -1,61 +1,18 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, memo } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Calendar as CalendarIcon, Clock, MapPin, Music, Users, Star } from 'lucide-react'
-import imgExample from '../assets/images/img.jpg'
 import Calendar from '../components/Calendar'
+import SEO from '../components/SEO'
+import { UPCOMING_EVENTS } from '../data/events'
 
 const Eventos = () => {
   const [selectedDate, setSelectedDate] = useState(null)
   const [selectedEvent, setSelectedEvent] = useState(null)
   const eventDetailRef = useRef(null)
 
-  // Datos de ejemplo para eventos
-  const events = [
-    {
-      id: 1,
-      title: "Neon Dreams",
-      date: "2024-12-15",
-      time: "22:00",
-      dj: "DJ Electric",
-      cover: "$30",
-      description: "Una noche épica con los mejores beats electrónicos y luces neón que iluminarán tu experiencia.",
-      image: imgExample,
-      type: "Electrónica"
-    },
-    {
-      id: 2,
-      title: "Electric Nights",
-      date: "2024-12-22",
-      time: "22:00",
-      dj: "DJ Storm",
-      cover: "$25",
-      description: "Noche de música electrónica con los mejores DJs internacionales y efectos visuales increíbles.",
-      image: imgExample,
-      type: "House"
-    },
-    {
-      id: 3,
-      title: "VIP Experience",
-      date: "2024-12-29",
-      time: "21:00",
-      dj: "DJ Premium",
-      cover: "$50",
-      description: "Experiencia VIP exclusiva con servicio de mesa privada y botellas premium.",
-      image: imgExample,
-      type: "VIP"
-    },
-    {
-      id: 4,
-      title: "New Year's Eve",
-      date: "2024-12-31",
-      time: "21:00",
-      dj: "DJ Countdown",
-      cover: "$75",
-      description: "Celebra el año nuevo con nosotros en la fiesta más exclusiva de la ciudad.",
-      image: imgExample,
-      type: "Especial"
-    }
-  ]
+  // Usar eventos importados
+  const events = UPCOMING_EVENTS
 
   // Scroll suave hacia los detalles del evento cuando se selecciona
   useEffect(() => {
@@ -106,6 +63,10 @@ const Eventos = () => {
 
   return (
     <div className="nexus-eventos-page">
+      <SEO 
+        title="Eventos Exclusivos"
+        description="Descubre los mejores eventos y fiestas en NEXUS. DJs internacionales, fiestas temáticas y experiencias VIP únicas. ¡Reserva tu entrada ahora!"
+      />
       <div className="nexus-eventos-container">
         {/* Header */}
         <motion.div
@@ -153,8 +114,9 @@ const Eventos = () => {
               >
                 <img
                   src={selectedEvent.image}
-                  alt={selectedEvent.title}
+                  alt={`Evento ${selectedEvent.title} en NEXUS`}
                   className="nexus-event-detail-image"
+                  loading="lazy"
                 />
                 <h3 className="nexus-event-detail-title">{selectedEvent.title}</h3>
                 
@@ -176,13 +138,16 @@ const Eventos = () => {
                 <p className="nexus-event-detail-description">{selectedEvent.description}</p>
                 <div className="nexus-event-detail-price">Cover: {selectedEvent.cover}</div>
                 
-                <motion.button
-                  className="nexus-event-detail-button"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Reservar Ahora
-                </motion.button>
+                <Link to="/reservas">
+                  <motion.button
+                    className="nexus-event-detail-button"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label={`Reservar entrada para ${selectedEvent.title}`}
+                  >
+                    Reserva Ya
+                  </motion.button>
+                </Link>
               </motion.div>
             )}
           </motion.div>
